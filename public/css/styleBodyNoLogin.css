@@ -1,0 +1,70 @@
+/* Why choose us */
+.card {
+    width: 400px;
+    height: 400px;
+}
+
+.card-body {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-title {
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    transition: bottom 0.3s ease;
+}
+
+.card-body p {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: justify;
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: Top 0.3s ease;
+}
+
+.card-body:hover .card-title {
+    bottom: 70%;
+}
+
+.card-body:hover p {
+    top: 35%;
+}
+
+/* our feature */
+
+.kotakputih {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-sizing: none;
+}
+
+
+/* About Us */
+
+
+
+/* our team */
+.bulat{
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    background-color: black;
+}
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* contact */
+
+
