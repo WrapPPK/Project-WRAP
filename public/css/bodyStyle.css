@@ -1,0 +1,99 @@
+/* DOKTER */
+
+/* Button Group */
+.btn-custom {
+  transition: all 0.3s ease;
+  color: rgba(34, 101, 151, 1);
+  border-color: rgba(34, 101, 151, 1);
+  border-width: 2px;
+}
+.btn-custom.active {
+  background-color: rgba(34, 101, 151, 1);
+  border-color: rgba(34, 101, 151, 1);
+  color: white;
+}
+.btn-custom:hover {
+  background-color: rgba(34, 101, 151, 1);
+  border-color: rgba(34, 101, 151, 1);
+  color: white;
+}
+
+/* sidebar dan info */
+
+html, body, .container-fluid, .row {
+  height: 100%;
+}
+
+.sidebar{
+  min-width: 50px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
+
+.sidebar ul {
+  padding-left: 0;
+  margin-bottom: 0; 
+  list-style: none; 
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+  padding:5px;
+}
+
+.sidebar ul li a {
+  color: #333;
+  text-decoration: none;
+  display: block; 
+}
+
+.sidebar ul li a:hover {
+  color: #666;
+}
+
+.sidebar ul li a i {
+  margin-right: 10px; 
+}
+
+
+.info{
+  min-width: 200px; 
+}
+
+.card {
+  background-color: #e0e0e0;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #ccc;
+}
+
+/* icon lingkaran pp dokter */
+.circle-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #333; 
+  display: inline-block;
+  margin-left: 10px; 
+}
+
+/* calender */
+#calendar {
+  width: 100%; 
+  height: 300px; 
+  margin: 0 auto; 
+}
+
+
+
+
+
+
+
+
+
+
+
