@@ -75,12 +75,44 @@
                 </div>
                 <div class="p-2">
                     <button type="button" class="btn btn-primary btn-lg" style="width: 100%; margin-bottom: 10px; margin-top:10px; background-color:red;border:none; padding:15px">Decline</button>
-                    <button type="button" class="btn btn-primary btn-lg" style="width: 100%;margin-bottom: 20px; margin-top:5px; background-color:green;border:none; padding:15px">Accept</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPopup" style="width: 100%;margin-bottom: 20px; margin-top:5px; background-color:green;border:none; padding:15px">Accept</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@include('dokter.popUpPasienDokter')
+
+
+
+<script>
+    $(document).ready(function() {
+    $('#howmanytimeaday').on('change', function() {
+        var selectedValue = $(this).val();
+        var timeInputs = '';
+        for (var i = 0; i < selectedValue; i++) {
+            timeInputs += '<input type="time" class="form-control w-100 mt-2" name="when[]">';
+        }
+        $('#time-inputs').html(timeInputs);
+    });
+});
+</script>
+
+
+<script>
+    // JavaScript
+window.onload = function() {
+    $('#modalPopup').modal('show');
+}
+
+// atau dengan jQuery
+$(document).ready(function() {
+    $('#modalPopup').modal('show');
+});
+</script>
+
+
 
 <!-- Tambahkan jQuery dan DataTables -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
