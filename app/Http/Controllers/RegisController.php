@@ -44,7 +44,7 @@ class RegisController extends Controller
             'doctor' => $request->input('doctor'),
         ]);
 
-        return redirect()->route('login');
+        return redirect('/login');
     }
 
     public function show(string $id)

@@ -33,9 +33,12 @@
                 <div class="sub Tulisan" style="color: rgba(135, 192, 205, 1); font-size: 20px; font-weight: 600;">
                     <p>Sign in to your account</p>
                 </div>
+                @if ($errors->any())
+                        {{ implode('', $errors->all(':message')) }}
+                        @endif
                 <div class="mb-3">
                     <label for="email" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Email</label>
-                    <input type="text" id="email" name="enail" class="form-control w-100" placeholder="Enter your email" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
+                    <input type="email" id="email" name="email" class="form-control w-100" placeholder="Enter your email" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
                 </div>
                 <div class="mb-3">
                     <label for="Password" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Password</label>
