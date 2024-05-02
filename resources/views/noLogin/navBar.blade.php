@@ -11,7 +11,9 @@
     <div class="container-fluid px-5">
         <nav class="navbar navbar-expand-lg fixed-top mb-4 px-5">
             <div class="container-fluid">
-                <a class="navbar-brand me-auto" href="#">Logo</a>
+                <a class="navbar-brand me-auto" href="/">
+                    <img src="images/RespiraCareLogo-noBG.png" alt="RespiraCare Logo" style="width: 150px; height: auto;">
+                </a>
                 <div class="offcanvas offcanvas-end" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
@@ -34,7 +36,7 @@
                         </ul>
                     </div>
                 </div>
-                <a class="login-button" href="#">Login</a>
+                <a class="login-button" href="/login">Login</a>
                 <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

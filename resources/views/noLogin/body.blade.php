@@ -18,7 +18,7 @@
             <p style="font-size:40px;">Make Your Place A</p>
             <p style="font-size:40px; font-weight:bold; color:rgba(17, 63, 103, 1)">Better Living</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo sit amet orci tincidunt dictum.</p>
-            <a class="login-button" href="#">Login</a>
+            <a class="login-button" href="/login">Login</a>
             <button class="navbar-toggler pe-0 p-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
