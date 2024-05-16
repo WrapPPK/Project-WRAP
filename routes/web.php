@@ -18,6 +18,12 @@ Route::get('/', function () {
 
 });
 
+
+
+// Pilih Role
+Route::get('/pilihRole', function () {return view('auth.pilihRole');});
+
 // Pasien
+Route::get('/loginPasien', [PasienController::class, 'loginview'])->name('loginPasien');
 Route::get('/patient', [PasienController::class, 'index'])->name('patient');
 

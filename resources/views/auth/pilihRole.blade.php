@@ -34,12 +34,12 @@
                     <p>Choose Role</p>
                 </div>
                 <div class="mb-3 text-center">
-                    <button type="button" class="btn btn-primary" style="width: 100%; max-width: 570px; height: 50px; background-color:rgba(17, 63, 103, 1); font-weight:bold;">
+                    <button type="button" href="/loginPasien" class="btn btn-primary" style="width: 100%; max-width: 570px; height: 50px; background-color:rgba(17, 63, 103, 1); font-weight:bold;">
                         Patient
                     </button>
                 </div>
                 <div class="mb-3 text-center">
-                    <button type="button" class="btn btn-primary" style="width: 100%; max-width: 570px; height: 50px; background-color:rgba(17, 63, 103, 1); font-weight:bold;">
+                    <button type="button" href="/loginDokter" class="btn btn-primary" style="width: 100%; max-width: 570px; height: 50px; background-color:rgba(17, 63, 103, 1); font-weight:bold;">
                         Doctor
                     </button>
                 </div>
