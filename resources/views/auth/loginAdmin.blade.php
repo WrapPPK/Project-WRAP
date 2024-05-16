@@ -1,4 +1,4 @@
-<!-- Pasien -->
+<!-- admin -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +25,11 @@
         <div class="col-md-6 order-md-2">
             <img src="{{ asset('images/Login.jpg') }}" alt="Gambar halaman login" class="img-fluid">
         </div>
-        <div class="col-md-6 order-md-1" style="padding-top: 180px; padding-right: 100px; padding-left: 100px;">
+        <div class="col-md-6 order-md-1" style="padding-top: 90px; padding-right: 100px; padding-left: 100px;">
             <form>
+                <div class="Tulisan" style="color: rgba(34, 101, 151, 1); font-size: 3vw; font-weight: 600;">
+                    Hello admin,
+                </div>
                 <div class="Tulisan" style="color: rgba(34, 101, 151, 1); font-size: 3vw; font-weight: 600;">
                     Welcome to RespiraCare
                 </div>
@@ -34,12 +37,12 @@
                     <p>Sign in to your account</p>
                 </div>
                 <div class="mb-3">
-                    <label for="emailPasien" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Email</label>
-                    <input type="text" id="emailPasien" class="form-control w-100" placeholder="Enter Email" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
+                    <label for="emailAdmin" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Email</label>
+                    <input type="text" id="emailAdmin" class="form-control w-100" placeholder="Enter Email" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
                 </div>
                 <div class="mb-3">
-                    <label for="passwordPasien" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Password</label>
-                    <input type="password" id="PasswordPasien" class="form-control w-100" placeholder="Enter your password" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
+                    <label for="passwordadmin" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Password</label>
+                    <input type="password" id="passwordAdmin" class="form-control w-100" placeholder="Enter password" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
                 </div>
                 <div class="mb-3" style="text-align: right; font-weight: bold;">
                     <a href="#" style="text-decoration: none; color: rgba(34, 101, 151, 1);">Forgot Password</a>
