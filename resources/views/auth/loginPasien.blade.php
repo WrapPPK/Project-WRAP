@@ -25,7 +25,7 @@
         <div class="col-md-6 order-md-2">
             <img src="{{ asset('images/Login.jpg') }}" alt="Gambar halaman login" class="img-fluid">
         </div>
-        <div class="col-md-6 order-md-1" style="padding-top: 180px; padding-right: 100px; padding-left: 100px;">
+        <div class="col-md-6 order-md-1" style="padding-top: 100px; padding-right: 100px; padding-left: 100px;">
             <form>
                 <div class="Tulisan" style="color: rgba(34, 101, 151, 1); font-size: 3vw; font-weight: 600;">
                     Welcome to RespiraCare
