@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'doctor' => [
+            'driver' => 'session',
+            'provider' => 'doctors',
+        ],
     ],
 
     /*
@@ -63,6 +71,14 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\adminModel::class, // Ganti dengan model yang sesuai untuk admin
+        ],
+        'doctors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\doctorModel::class, // Ganti dengan model yang sesuai untuk admin
         ],
 
         // 'users' => [

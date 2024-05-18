@@ -195,7 +195,7 @@
                         </center>
                         <h3 class="text-center mt-3">Admin</h3>
                         <li class="nav-item">
-                            <a class="nav-link mt-3" onclick="#">
+                            <a class="nav-link mt-3" href="{{ route('logout') }}">
                                 <i class="fas fa-user" style="margin-right:15px;"></i>Dokter
                             </a>
                         </li>
@@ -206,21 +206,22 @@
     </div>
 
     <div class="container" style="margin-top:80px; text-align:center;">
-    <form method="post" action="#" enctype="multipart/form-data" role="form">
+    <form action="/fungsiInsertDoctor" method="POST" class="form-valid" enctype="multipart/form-data">
+        @csrf
         <h2 class="AkunHead fw-semibold mt-5 " style="text-align:center; margin-bottom:40px;;">
             Add Doctor Account 
         </h2>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
-            <input type="text" class="form-control" placeholder="NIP" aria-label="NIP" name="NIP" aria-describedby="basic-addon1" />
+            <input type="text" class="form-control" placeholder="NIP" aria-label="NIP" name="nip_doctor" aria-describedby="basic-addon1" />
         </div>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
-            <input type="text" class="form-control" placeholder="Name" aria-label="Name" name="Name" aria-describedby="basic-addon1" />
+            <input type="text" class="form-control" placeholder="Name" aria-label="Name" name="Nama_doctor" aria-describedby="basic-addon1" />
         </div>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
-            <input type="email" class="form-control" placeholder="Email" aria-label="Email" name="Email" aria-describedby="basic-addon1" />
+            <input type="email" class="form-control" placeholder="Email" aria-label="Email" name="Email_doctor" aria-describedby="basic-addon1" />
         </div>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
-            <input type="text" class="form-control" placeholder="Password" aria-label="Password" name="Password" aria-describedby="basic-addon1" />
+            <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="Password_doctor" aria-describedby="basic-addon1" />
         </div>
 
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">Upload photo</div>

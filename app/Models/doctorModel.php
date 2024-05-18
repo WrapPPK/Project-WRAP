@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class adminModel extends Model implements AuthenticatableContract
+class doctorModel extends Model implements AuthenticatableContract
 {
     use Authenticatable;
 
-    protected $table = 'admintable';
-    protected $fillable = ['id','nip','nama','email','password'];
+    protected $table = 'doctortable';
+    protected $fillable = ['id','nip','name','email','password','uploadFoto'];
 
     use HasFactory;
 

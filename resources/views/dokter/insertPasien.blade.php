@@ -54,12 +54,12 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="inputemail" class="form-label">Email</label>
-                                <input type="email" name="email" id="inputemail" class="form-control" required>
+                                <input type="email" name="email_pasien" id="inputemail" class="form-control" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="inputpassword" class="form-label">Password</label>
                                 <div class="input-group">
-                                    <input type="password" name="password" id="inputpassword" class="form-control" required>
+                                    <input type="password" name="password_pasien" id="inputpassword" class="form-control" required>
                                     <span class="input-group-text icon" id="id_icon"><i class="fa-regular fa-eye"></i></span>
                                 </div>
                             </div>
@@ -67,11 +67,11 @@
                         <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputUmur" class="form-label">Age</label>
-                                <input type="text" name="umur" id="inputUmur" class="form-control" required>
+                                <input type="text" name="umur_pasien" id="inputUmur" class="form-control" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="inputJabatan" class="form-label">Gender</label>
-                                <select name="jenis_kelamin" id="inputJabatan" class="form-select" required>
+                                <select name="jenis_kelamin_pesien" id="inputJabatan" class="form-select" required>
                                     <option value="">Pilih </option>
                                     <option value="Laki-laki">Man</option>
                                     <option value="Perempuan">Woman</option>
@@ -80,17 +80,17 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="inputPenyakit" class="form-label">Desease</label>
-                                <input type="text" name="inputPenyakit" id="inputPenyakit" class="form-control" required>
+                                <input type="text" name="inputPenyakit_pasien" id="inputPenyakit" class="form-control" required>
                             </div>
                         </div>
                         <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputLamaMinumObat" class="form-label">Time to take medicine</label>
-                                <input type="number" name="inputLamaMinumObat" id="inputLamaMinumObat" class="form-control" required>
+                                <input type="number" name="inputLamaMinumObat_pasien" id="inputLamaMinumObat" class="form-control" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="inputObatSehari" class="form-label">time to take medication (/day)</label>
-                                <select id="inputObatSehari" class="form-control" style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px;" onchange="showHideTimeInput()">
+                                <select id="inputObatSehari" name="inputObatSehari_pasien" class="form-control" style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px;" onchange="showHideTimeInput()">
                                     <option value="" selected>Choose Here</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -101,11 +101,11 @@
                         <div class="row pt-5">
                             <div class="col-md-4" id="timeInputs" style="display: none;">
                                 <label for="waktu">Pilih waktu:</label>
-                                <input type="time" id="waktu" name="waktu">
+                                <input type="time" id="waktu" name="waktu_pasien">
                             </div>
                             <div class="col-md-4">
                                 <label for="foto_profil" class="form-label">Foto Profil :</label>
-                                <input type="file" name="foto_profil" id="foto_profil" class="form-control" required>
+                                <input type="file" name="foto_profil_pasien" id="foto_profil" class="form-control" required>
                             </div>
                         </div>
                         <div class="row pt-5">

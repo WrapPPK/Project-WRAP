@@ -175,7 +175,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item" style="margin-right: 30px">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('logout') }}">
                             <i class="fas fa-right-from-bracket" style="margin-right:15px;"> </i>Log Out
                         </a>
                     </li>
@@ -206,26 +206,28 @@
     </div>
 
     <div class="container" style="margin-top:80px; text-align:center;">
-    <form method="post" action="#" enctype="multipart/form-data" role="form">
+        <form method="POST" action="{{ route('doctor.update', $data->id) }}" enctype="multipart/form-data" role="form">
+        @csrf
+        @method('PUT')
         <h2 class="AkunHead fw-semibold mt-5 " style="text-align:center; margin-bottom:40px;;">
             Edit Doctor Account 
         </h2>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
-            <input type="text" class="form-control" placeholder="NIP" aria-label="NIP" name="NIP" aria-describedby="basic-addon1" />
+            <input type="text" class="form-control" placeholder="NIP" aria-label="NIP" value="{{ $data->nip }}" name="NIP" aria-describedby="basic-addon1" />
         </div>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
-            <input type="text" class="form-control" placeholder="Name" aria-label="Name" name="Name" aria-describedby="basic-addon1" />
+            <input type="text" class="form-control" placeholder="Name" aria-label="Name" value="{{ $data->name }}" name="Name" aria-describedby="basic-addon1" />
         </div>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
-            <input type="text" class="form-control" placeholder="Email" aria-label="Email" name="Email" aria-describedby="basic-addon1" />
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email" name="Email" value="{{ $data->email }}" aria-describedby="basic-addon1" />
         </div>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
-            <input type="text" class="form-control" placeholder="Password" aria-label="Password" name="Password" aria-describedby="basic-addon1" />
+            <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="Password" value="{{ $data->password }}"  aria-describedby="basic-addon1" />
         </div>
 
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">Upload photo</div>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
-            <input type="file" name="uploadFoto" size="20" />
+            <input type="file" name="uploadFoto"  size="20" />
         </div>
         <div class="mt-4" style="text-align: center; padding-bottom:100px;">
             <button class="button" type="submit">SUBMIT</button>

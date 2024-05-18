@@ -38,7 +38,7 @@
                     </a>
                 </div>
                 <div class="mb-3 text-center">
-                    <a href="/loginDokter" class="btn btn-primary" style="width: 100%; max-width: 570px; height: 50px; background-color:rgba(17, 63, 103, 1); font-weight:bold;">
+                    <a href="/loginDoctor" class="btn btn-primary" style="width: 100%; max-width: 570px; height: 50px; background-color:rgba(17, 63, 103, 1); font-weight:bold;">
                         <p style="position:relative; top:5px;">Doctor</p>
                     </a>
                 </div>

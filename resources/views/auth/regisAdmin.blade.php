@@ -44,7 +44,7 @@
             <div class="card border-0 shadow border-radius">
                 <h2 class="text-center pt-5">Enter Admin Data</h2>
                 <div class="card-body">
-                    <form action="#" method="POST" class="form-valid" enctype="multipart/form-data">
+                    <form action="/fungsiRegisAdmin" method="POST" class="form-valid" enctype="multipart/form-data">
                         @csrf
                         <div class="row pt-5">
                             <div class="col-md-4">

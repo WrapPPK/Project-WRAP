@@ -25,8 +25,8 @@
         <div class="col-md-6 order-md-2">
             <img src="{{ asset('images/Login.jpg') }}" alt="Gambar halaman login" class="img-fluid">
         </div>
-        <div class="col-md-6 order-md-1" style="padding-top: 90px; padding-right: 100px; padding-left: 100px;">
-            <form action="/dashboardAdmin" method="POST">
+        <div class="col-md-6 order-md-1" style="padding-top: 50px; padding-right: 100px; padding-left: 100px;">
+            <form action="/authAdmin" method="POST">
                 @csrf
                 <div class="Tulisan" style="color: rgba(34, 101, 151, 1); font-size: 3vw; font-weight: 600;">
                     Hello admin,
@@ -55,6 +55,9 @@
                     <button type="submit" class="btn btn-primary" style="width: 100%; max-width: 570px; height: 50px; background-color:rgba(17, 63, 103, 1); font-weight:bold;">
                         Sign In
                     </button>
+                </div>
+                <div class="mb-3 text-center">
+                    <a href="/pilihRole" type="button" href="auth.pilihrole"class="btn btn-primary" style="width: 100%; max-width: 570px; height: 50px; background-color:rgba(17, 63, 103, 1); font-weight:bold;padding-top:10px;">Kembali</i></a>
                 </div>
             </form>
         </div>

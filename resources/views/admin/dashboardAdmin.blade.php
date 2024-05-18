@@ -175,7 +175,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item" style="margin-right: 30px">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('logout') }}">
                             <i class="fas fa-right-from-bracket" style="margin-right:15px;"> </i>Log Out
                         </a>
                     </li>
@@ -195,7 +195,7 @@
                         </center>
                         <h3 class="text-center mt-3">Admin</h3>
                         <li class="nav-item">
-                            <a class="nav-link mt-3" onclick="#">
+                            <a class="nav-link mt-3" href="/dashboardAdmin">
                                 <i class="fas fa-user" style="margin-right:15px;"></i>Dokter
                             </a>
                         </li>
@@ -208,7 +208,7 @@
     <div class="container" style="width: 80%; margin-top:90px;">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <h1 class="mb-3">Doctor Account</h1>
-            <button class="button mb-2" onclick="location.href='#'"><i class="fas fa-user-plus" style="margin:2px; margin-right:10px;"></i>Tambah</button>
+            <button class="button mb-2" onclick="location.href='/insertDoctorView'"><i class="fas fa-user-plus" style="margin:2px; margin-right:10px;"></i>Tambah</button>
         </div>
         <div class="inner-container" style="margin-bottom:100px;">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -218,22 +218,32 @@
                     <th>NIP</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Password</th>
+                    <!-- <th>Password</th> -->
                     <th>Actions</th>
                 </tr>
             </thead>
                 <tbody>
+                    @php
+                        $data = \App\Models\doctorModel::all();
+                    @endphp
+                    @foreach($data as $key => $data)
                     <tr>
-                        <td>1</td>
-                        <td>129312903</td>
-                        <td>Muhammad Risky Farhan</td>
-                        <td>rskyfrhn@gmail.com</td>
-                        <td>risfrhn</td>
+                        <td>{{ $key + 1 }}</td>
+                        <td>{{ $data->nip }}</td>
+                        <td>{{ $data->name }}</td>
+                        <td>{{ $data->email }}</td>
+                        <!-- <td>{{ $data->password }}</td> -->
                         <td>
-                            <button class="button" onclick="location.href='#'"><i class="fas fa-pencil-alt"></i></button>
-                            <button class="buttonDel" onclick="#"><i class="fas fa-trash"></i></button>
+                            <form action="{{ route('doctor.destroy', $data->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="buttonDel"><i class="fas fa-trash"></i></button>
+                            </form>
+                            <h1></h1>
+                            <a href="{{ route('doctor.edit', $data->id) }}" class="button"><i class="fas fa-pencil-alt"></i></a>                            
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
