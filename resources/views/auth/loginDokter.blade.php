@@ -1,3 +1,4 @@
+<!-- Dokter -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,16 +25,14 @@
         <div class="col-md-6 order-md-2">
             <img src="{{ asset('images/Login.jpg') }}" alt="Gambar halaman login" class="img-fluid">
         </div>
-<<<<<<< Updated upstream:resources/views/auth/login.blade.php
-        <div class="col-md-6 order-md-1" style="padding-top: 180px; padding-right: 100px; padding-left: 100px;">
-            <form>
-=======
         <div class="col-md-6 order-md-1" style="padding-top: 90px; padding-right: 100px; padding-left: 100px;">
             <form method="post" action="{{ route('dashDok') }}">
                 @csrf
->>>>>>> Stashed changes:resources/views/auth/loginDokter.blade.php
                 <div class="Tulisan" style="color: rgba(34, 101, 151, 1); font-size: 3vw; font-weight: 600;">
-                    Welcome to PPK
+                    Hello Doc,
+                </div>
+                <div class="Tulisan" style="color: rgba(34, 101, 151, 1); font-size: 3vw; font-weight: 600;">
+                    Welcome to RespiraCare
                 </div>
                 @if ($errors->any())
                         {{ implode('', $errors->all(':message')) }}
@@ -42,21 +41,12 @@
                     <p>Sign in to your account</p>
                 </div>
                 <div class="mb-3">
-<<<<<<< Updated upstream:resources/views/auth/login.blade.php
-                    <label for="name" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Name</label>
-                    <input type="text" id="name" class="form-control w-100" placeholder="Enter your name" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
-                </div>
-                <div class="mb-3">
-                    <label for="Password" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Password</label>
-                    <input type="password" id="Password" class="form-control w-100" placeholder="Enter your password" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
-=======
                     <label for="emailDokter" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Email</label>
                     <input type="email" name="email" id="emailDokter" class="form-control w-100" placeholder="Enter Email" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
                 </div>
                 <div class="mb-3">
                     <label for="passwordDokter" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Password</label>
                     <input type="password" name="password" id="passwordDokter" class="form-control w-100" placeholder="Enter password" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
->>>>>>> Stashed changes:resources/views/auth/loginDokter.blade.php
                 </div>
                 <div class="mb-3" style="text-align: right; font-weight: bold;">
                     <a href="#" style="text-decoration: none; color: rgba(34, 101, 151, 1);">Forgot Password</a>
@@ -66,9 +56,9 @@
                         Sign In
                     </button>
                 </div>
-                <div class="Signup text-center">
+                <!-- <div class="Signup text-center">
                     <p>Don't have an account? <a href="#" style="text-decoration:none; font-weight:bold;">Sign up</a></p>
-                </div>
+                </div> -->
             </form>
         </div>
     </div>

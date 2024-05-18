@@ -66,7 +66,7 @@
         <div class="kotakputih">
             <div class="container-fluid" style="padding-bottom:100px" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
                 <div class="row text-center justify-content-center" style="padding-top:100px">
-                    <div class="col" style="padding-bottom:30px; font-size: 60px; font-weight:bold; color: rgba(34, 101, 151, 1)">
+                    <div id="fitur" class="col" style="padding-bottom:30px; font-size: 60px; font-weight:bold; color: rgba(34, 101, 151, 1)">
                         Our Feature
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis arcu ac fermentum placerat.</p>
@@ -106,7 +106,7 @@
 
     <div class="container-fluid">
         <div class="row text-center justify-content-center" style="padding:100px" data-aos="fade-down" data-aos-duration="1000">
-            <div class="col" style="padding-bottom:30px; font-size: 60px; font-weight:bold; color: rgba(34, 101, 151, 1)">
+            <div id="about" class="col" style="padding-bottom:30px; font-size: 60px; font-weight:bold; color: rgba(34, 101, 151, 1)">
                 About Us
             </div>
             <p data-aos="fade-down" data-aos-duration="500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis arcu ac fermentum placerat.</p>
