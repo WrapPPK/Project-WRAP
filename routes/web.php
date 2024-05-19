@@ -33,6 +33,7 @@ Route::delete('/pasiens/{id}', [PasienController::class, 'destroy'])->name('pasi
 
 // Route untuk menampilkan form edit
 Route::get('/pasiens/{id}/edit', [PasienController::class, 'edit'])->name('pasiens.edit');
+Route::get('/pasiens/{id}/info', [PasienController::class, 'info'])->name('pasiens.info');
 
 // Route untuk mengupdate data pasien
 Route::put('/pasiens/{id}', [PasienController::class, 'update'])->name('pasiens.update');
@@ -44,6 +45,7 @@ Route::post('/dashDok', [DoctorController::class, 'authenticate'])->name('dashDo
 Route::post('/doctors', [DoctorController::class, 'store'])->name('doctors.store');
 Route::get('/dashDokter', function () {return view('dokter.DashboardDokter');});
 Route::get('/tambahPasien', function () {return view('dokter.insertPasien');});
+// Route::get('/infoPasien{id}/edit', function () {return view('dokter.infoPasien');});
 
 
 // Admin

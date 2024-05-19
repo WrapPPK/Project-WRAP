@@ -10,7 +10,7 @@ class Pasien extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'password', 'age', 'gender', 'disease', 'time_to_take_medicine', 'medication_times', 'photo'
+        'name', 'email', 'password', 'age', 'gender', 'disease','level', 'time_to_take_medicine', 'medication_times', 'photo'
     ];
 
     protected $hidden = [

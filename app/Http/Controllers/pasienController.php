@@ -31,6 +31,7 @@ class pasienController extends Controller
         $pasien->age = $request->input('age');
         $pasien->gender = $request->input('gender');
         $pasien->disease = $request->input('disease');
+        $pasien->level = $request->input('level');
         $pasien->time_to_take_medicine = $request->input('time_to_take_medicine');
         $pasien->medication_times = $request->input('medication_times');
         $pasien->password = Hash::make($request->input('password'));
@@ -59,6 +60,12 @@ class pasienController extends Controller
     {
         $pasien = Pasien::findOrFail($id);
         return view('dokter.updatePasien', compact('pasien'));
+    }
+
+    public function info($id)
+    {
+        $pasien = Pasien::findOrFail($id);
+        return view('dokter.infoPasien', compact('pasien'));
     }
 
     public function update(Request $request, $id)
@@ -91,6 +98,7 @@ class pasienController extends Controller
         $pasien->age = $request->age;
         $pasien->gender = $request->gender;
         $pasien->disease = $request->disease;
+        $pasien->level = $request->level;
         $pasien->status = $request->status;
         $pasien->time_to_take_medicine = $request->time_to_take_medicine;
         $pasien->medication_times = $request->medication_times;

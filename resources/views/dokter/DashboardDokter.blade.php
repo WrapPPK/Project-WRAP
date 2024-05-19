@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Judul Halaman Anda</title>
+    <title>Doctor Page</title>
 
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
             <form action="/logout" method="POST">
               @csrf
-              <button type="submit" class="btn btn-success border border-white" style="background-color: #c90000">Keluar</button>
+              {{-- <button type="submit" class="btn btn-success border border-white" style="background-color: #c90000">Keluar</button> --}}
             </form>
         </div>
     </nav>
@@ -149,7 +149,7 @@
                 <td>Name Patient</td>
                 <td>Desease</td>
                 <td>Status</td>
-                {{-- <td>Info</td> --}}
+                <td>Info</td>
                 <td>Action</td>
             </tr>
         </thead>
@@ -168,11 +168,12 @@
                 </td>
                 <td class="people-des">
                     <h5>{{$data->disease}}</h5>
+                    <p>{{$data->level}}</p>
                 </td>
 
                 <td class="active"><p>{{$data->status}}</p></td>
 
-                {{-- <td class="info"><a href="#"><p>Info</p></a></td> --}}
+                <td class="info"><a href="{{ route('pasiens.info', ['id' => $data->id]) }}"><p>Info</p></a></td>
                 <td>
                     <button class="button" onclick="location.href='{{ route('pasiens.edit', ['id' => $data->id]) }}'"><i class="fas fa-pencil-alt"></i></button>
                     <form action="{{ route('pasiens.destroy', ['id' => $data->id]) }}" method="POST">
@@ -193,9 +194,9 @@
     <script>
         // Data untuk chart 1
         var data1 = {
-            labels: ['Red', 'Blue', 'Yellow'],
+            labels: ['High', 'Low', 'Medium'],
             datasets: [{
-                data: [12, 19, 3],
+                data: [0, 2, 1],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -212,18 +213,16 @@
 
         // Data untuk chart 2
         var data2 = {
-            labels: ['Green', 'Purple', 'Orange'],
+            labels: ['Active', 'Done'],
             datasets: [{
-                data: [8, 15, 7],
+                data: [2, 1],
                 backgroundColor: [
                     'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(153, 102, 255, 0.2)'
                 ],
                 borderColor: [
                     'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(153, 102, 255, 1)'
                 ],
                 borderWidth: 1
             }]

@@ -83,6 +83,7 @@
                                 <input type="text" name="disease" id="inputPenyakit" class="form-control" required>
                             </div>
                         </div>
+
                         <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputLamaMinumObat" class="form-label">Time to take medicine</label>
@@ -95,6 +96,15 @@
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputJabatan" class="form-label">Level</label>
+                                <select name="gender" id="inputJabatan" class="form-select" required>
+                                    <option value="">Pilih </option>
+                                    <option value="Laki-laki">Low</option>
+                                    <option value="Perempuan">Medium</option>
+                                    <option value="other">High</option>
                                 </select>
                             </div>
                         </div>

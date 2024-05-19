@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Data Pasien</title>
+    <title>Info Pasien</title>
 
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -40,20 +40,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
             <form action="/logout" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-success border border-white"
-                    style="background-color: #c90000">Kembali</button>
+                {{-- <button type="submit" class="btn btn-success border border-white"
+                    style="background-color: #c90000">Kembali</button> --}}
             </form>
         </div>
     </nav>
     <div class="container-fluid" style="margin-top: 100px; margin-bottom: 150px">
         <div class="container mx-auto">
             <div class="card border-0 shadow border-radius">
-                <h2 class="text-center pt-5">Masukkan Data Pasien</h2>
+                <h2 class="text-center pt-5">Info Data Pasien</h2>
                 <div class="card-body">
-                    <form action="{{ route('pasiens.update', ['id' => $pasien->id]) }}" method="POST"
+                    <form action="#" method="POST"
                         class="form-valid" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
+                        {{-- @csrf
+                        @method('PUT') --}}
                         {{-- @php
                             $data = App\Models\Pasien::findOrFail($id);
                         @endphp --}}
@@ -141,16 +141,16 @@
                                 <label for="waktu">Pilih waktu:</label>
                                 <input type="time" id="waktu" name="waktu">
                             </div> --}}
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <label for="foto_profil" class="form-label">Foto Profil :</label>
                                 <input value="{{$pasien->photo}}" type="file" name="photo" id="foto_profil" class="form-control" >
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="row pt-5">
                             <div class="col-md-12">
                                 <div class="d-grid gap-2">
                                     <button type="submit" class="btn btn-md text-light" onclick="#"
-                                        style="background-color: #47a992">Submit</button>
+                                        style="background-color: #ff0000">Kepatuhan</button>
                                 </div>
                             </div>
                         </div>
