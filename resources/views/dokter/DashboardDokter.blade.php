@@ -76,18 +76,18 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashDokter#test">List Patient</a>
+                            <a class="sidebar-link" href="/dashboardDoctor#test">List Patient</a>
                         </li>
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#auth">
+                    <a href="logout" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#auth">
                         <i class="lni lni-exit"></i>
                         <span>Log Out</span>
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="#">Log Out</a>
+                            <a class="sidebar-link" href="logout">Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -111,10 +111,12 @@
             <dir class="board" style="margin-top:70px;">
                 <div class="breadcrums">
                     <h1>Welcome.</h1>
-                    <h4>Dokter Ganteng</h4>
+                    @if (Auth::guard('doctor')->check())
+                    <h4>{{ Auth::guard('doctor')->user()->name }}</h4>
+                    @endif
                 </div>
             </dir>
-            <div class="row justify-content-bettwen">
+            {{-- <div class="row justify-content-bettwen">
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body text-center p-3">
@@ -131,7 +133,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <dir class="board">
     <div class="textheadertable" style="padding:20px;">
         <div id="test" style="float:left;">
@@ -191,12 +193,12 @@
         </div>
     </div>
 
-    <script>
+    {{-- <script>
         // Data untuk chart 1
         var data1 = {
             labels: ['High', 'Low', 'Medium'],
             datasets: [{
-                data: [0, 2, 1],
+                data: [{{ $high }}, {{ $low }}, {{ $medium }}],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -215,7 +217,7 @@
         var data2 = {
             labels: ['Active', 'Done'],
             datasets: [{
-                data: [2, 1],
+                data: [{{ $active }}, {{ $done }}],
                 backgroundColor: [
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(153, 102, 255, 0.2)'
@@ -228,24 +230,7 @@
             }]
         };
 
-        // Data untuk chart 3
-        var data3 = {
-            labels: ['Black', 'White', 'Gray'],
-            datasets: [{
-                data: [5, 10, 15],
-                backgroundColor: [
-                    'rgba(0, 0, 0, 0.2)',
-                    'rgba(255, 255, 255, 0.2)',
-                    'rgba(128, 128, 128, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(0, 0, 0, 1)',
-                    'rgba(255, 255, 255, 1)',
-                    'rgba(128, 128, 128, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
+
 
         // Membuat chart 1
         var ctx1 = document.getElementById('donutChart1').getContext('2d');
@@ -276,7 +261,7 @@
                 }
             }
         });
-    </script>
+    </script> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>

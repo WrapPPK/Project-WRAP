@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
+use App\Models\adminModel as admin;
+use App\Models\Doctor as doctor;
 
 class adminController extends Controller
 {
@@ -18,22 +21,17 @@ class adminController extends Controller
         ]);
     }
 
-    public function authenticate(Request $request): RedirectResponse
+    public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
+        $credentials = $request->only('email', 'password');
 
-        //versi tutorial video
-        if(Auth::attempt($credentials)){
-            $request->session()->regenerate();
-            // dd(Auth::check());
-            return redirect()->intended('/dashboardadmin');
-            // return redirect('/admin');
+        if (Auth::guard('admin')->attempt($credentials)) {
+            // Jika autentikasi berhasil, arahkan pengguna ke dashboard admin
+            return redirect()->route('dashboardAdmin');
         }
 
-        return back()->with('loginError', 'Login Failed!');
+        // Jika autentikasi gagal, kembali ke halaman login dengan pesan kesalahan
+        return redirect()->route('loginAdmin')->with('error', 'Invalid email or password.');
     }
 
     public function logout()
@@ -60,7 +58,20 @@ class adminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $admin = new admin();
+        $admin->nip = $request->input('inputNip');
+        $admin->nama = $request->input('nama_lengkap');
+        $admin->email = $request->input('email');
+        $admin->password = Hash::make($request->input('password'));
+
+        $admin->save();
+
+        return redirect()->route('loginAdmin')->with('success', 'Admin account created successfully!');
+    }
+    public function dashboardAdminView()
+    {
+        $data = doctor::all();
+        return view('admin.dashboardAdmin', ['data' => $data]);
     }
 
     /**
@@ -76,22 +87,44 @@ class adminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $doctor = doctor::findOrFail($id);
+        return view('admin.editAdmin', ['data' => $doctor]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        // mencar data dokter dengan ID
+        $doctor = doctor::findOrFail($request->id);
+
+        // Update data dokter
+        $doctor->nip = $request->NIP;
+        $doctor->name = $request->Name;
+        $doctor->email = $request->Email;
+        $doctor->password = Hash::make($request->Password);
+        if ($request->hasFile('uploadFoto')) {
+            $file = $request->file('uploadFoto');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads'), $fileName);
+            $doctor->uploadFoto = 'uploads/' . $fileName;
+        }
+
+        // UPDATE
+        $doctor->save();
+
+        //MENGALIHKAN KE DASHBOARD
+        return redirect()->route('dashboardAdmin')->with('success', 'Doctor account updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $user = doctor::findOrFail($id); // menumakan user berdasarkan ID
+        $user->delete(); // Hapus user dari database
+        return redirect()->route('dashboardAdmin')->with('success', 'User has been deleted successfully');
     }
 }

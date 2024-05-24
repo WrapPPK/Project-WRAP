@@ -18,6 +18,12 @@ class DoctorController extends Controller
             'title' => 'loginDokter'
         ]);
     }
+    public function dashboardDoctorView()
+    {
+        return view('dokter.dashboardDokter', [
+            'title' => 'Dashboard'
+        ]);
+    }
     public function store(Request $request)
     {
         // $request->validate([
@@ -46,28 +52,44 @@ class DoctorController extends Controller
         return redirect()->back()->with('success', 'Doctor account created successfully!');
     }
 
-    public function listPasienView(){
-        $data = Pasien::all();
-        return view('dokter.DashboardDokter', ['data' => $data]);
-    }
-
-    public function authenticate(Request $request): RedirectResponse
+    public function listPasienView()
     {
-        $credentials = $request->validate([
-            'email' => 'required',
-            'password' => 'required'
+        // Menghitung jumlah masing-masing level
+        $low = Pasien::where('level', 'Low')->count();
+        $medium = Pasien::where('level', 'Medium')->count();
+        $high = Pasien::where('level', 'High')->count();
+
+        // Menghitung jumlah masing-masing status
+        $active = Pasien::where('status', 'Active')->count();
+        $done = Pasien::where('status', 'Done')->count();
+
+        // Periksa nilai-nilai variabel
+        dd($low, $medium, $high, $active, $done);
+
+        $data = Pasien::all();
+
+        return view('dokter.DashboardDokter', [
+            'data' => $data,
+            'low' => $low,
+            'medium' => $medium,
+            'high' => $high,
+            'active' => $active,
+            'done' => $done,
         ]);
-
-        //versi tutorial video
-        if(Auth::attempt($credentials)){
-            $request->session()->regenerate();
-            // dd(Auth::check());
-            return redirect()->intended('/dashDokter');
-            // return redirect('/admin');
-        }
-
-        return back()->with('loginError', 'Login Failed!');
     }
+
+    public function authenticate(Request $request)
+     {
+         $credentials = $request->only('email', 'password');
+
+         if (Auth::guard('doctor')->attempt($credentials)) {
+             // Jika autentikasi berhasil, arahkan pengguna ke dashboard admin
+             return redirect()->route('dashboardDoctor');
+         }
+
+         // Jika autentikasi gagal, kembali ke halaman login dengan pesan kesalahan
+         return redirect()->route('loginDokter')->with('error', 'Invalid email or password.');
+     }
 
     public function logout()
     {

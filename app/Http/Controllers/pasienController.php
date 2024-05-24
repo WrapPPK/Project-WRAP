@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Pasien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -47,12 +48,43 @@ class pasienController extends Controller
 
         return redirect()->back()->with('success', 'Doctor account created successfully!');
     }
+
+    public function authenticate(Request $request)
+     {
+         $credentials = $request->only('email', 'password');
+
+         if (Auth::guard('pasien')->attempt($credentials)) {
+             // Jika autentikasi berhasil, arahkan pengguna ke dashboard admin
+             return redirect()->route('dashboardPasien');
+         }
+
+         // Jika autentikasi gagal, kembali ke halaman login dengan pesan kesalahan
+         return redirect()->route('loginPasien')->with('error', 'Invalid email or password.');
+     }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+    public function dashboardPasienView()
+    {
+        return view('Pasien.DashboardPasien', [
+            'title' => 'Dashboard'
+        ]);
+    }
     public function destroy($id)
     {
         $pasien = Pasien::findOrFail($id);
         $pasien->delete();
 
-        return redirect()->route('/dashDokter')->with('success', 'Pasien berhasil dihapus');
+        return redirect()->route('dashboardDoctor')->with('success', 'Pasien berhasil dihapus');
     }
 
 

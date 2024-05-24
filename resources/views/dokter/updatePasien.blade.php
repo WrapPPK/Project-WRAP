@@ -31,7 +31,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/dashDokter">RespiraCare</a>
+            <a class="navbar-brand" href="/dashboardDoctor">RespiraCare</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">

@@ -28,7 +28,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/dashDokter">RespiraCare</a>
+            <a class="navbar-brand" href="/dashboardDoctor">RespiraCare</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -100,11 +100,11 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="inputJabatan" class="form-label">Level</label>
-                                <select name="gender" id="inputJabatan" class="form-select" required>
+                                <select name="level" id="inputJabatan" class="form-select" required>
                                     <option value="">Pilih </option>
-                                    <option value="Laki-laki">Low</option>
-                                    <option value="Perempuan">Medium</option>
-                                    <option value="other">High</option>
+                                    <option value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
                                 </select>
                             </div>
                         </div>
