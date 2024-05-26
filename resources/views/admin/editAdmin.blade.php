@@ -24,144 +24,141 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
     <style>
-        /* Sidebar */
-        #sidebar {
-            background-color: white;
-            height: 100vh;
-            color: black;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 200px;
-            z-index: 1;
-            
-        }
+    /* Sidebar */
+    #sidebar {
+        background-color: white;
+        height: 100vh;
+        color: black;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200px;
+        z-index: 1;
 
-        #sidebar .nav-link {
-            color: rgba(171, 171, 171, 1);
-        }
+    }
 
-        #sidebar .nav-link:hover {
-            background-color: #f8f9fa;
-            color: #00897B;
-        }
+    #sidebar .nav-link {
+        color: rgba(171, 171, 171, 1);
+    }
 
-        #sidebar .nav-link.active {
-            background-color: #f8f9fa;
-            color: #00897B;
-        }
+    #sidebar .nav-link:hover {
+        background-color: #f8f9fa;
+        color: rgba(200, 204, 244, 1);
+    }
 
-        .submenu {
-            display: none;
-            padding-left: 20px;
-        }
+    #sidebar .nav-link.active {
+        background-color: #f8f9fa;
+        color: rgba(88, 95, 233, 1);
+    }
 
-        #sidebar .active {
-            background-color: #555;
-        }
+    .submenu {
+        display: none;
+        padding-left: 20px;
+    }
 
-        main {
-            padding-top: 20px;
-            margin-left: 260px;
-        }
+    #sidebar .active {
+        background-color: #555;
+    }
 
-        body {
-            background-color: rgba(240, 255, 243, 1);
-        }
-        
+    main {
+        padding-top: 20px;
+        margin-left: 260px;
+    }
 
-        /* Kotak table */
-        .container {
-            margin-top: 50px;
-            margin-left: 230px;
-            overflow: hidden;
-            max-height: 600px;
-            padding-bottom:50px;
-        }
+    body {
+        background-color: rgba(230, 232, 244, 1);
+    }
 
-        .inner-container {
-            border: 1px solid #ddd;
-            box-shadow;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            margin-bottom:100px;
-            background-color: white;
-            width:100%;
-            padding-bottom:50px;
-            margin-bottom:50px;
-        }
 
-        .table-container {
-            width: 100%;
-            padding-bottom:50px;
-        }
+    /* Kotak table */
+    .container {
+        margin-top: 50px;
+        margin-left: 230px;
+        overflow: hidden;
+        max-height: 600px;
+        padding-bottom:50px;
+    }
 
-        .table {
-            width: 100%;
-            padding-top:20px;
-        }
+    .inner-container {
+        border: 1px solid #ddd;
+        /* box-shadow; */
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        margin-bottom:100px;
+        background-color: white;
+        width:100%;
+        padding-bottom:50px;
+        margin-bottom:50px;
+    }
 
-        /* Nav */
-        nav.navbar {
-            background-color: #00897B;
-        }
+    .table-container {
+        width: 100%;
+        padding-bottom:50px;
+    }
 
-        nav.navbar a {
-            color: white;
-        }
+    .table {
+        width: 100%;
+        padding-top:20px;
+    }
 
-        nav.navbar a:hover {
-            color: #ffcc00;
-        }
-        /* button */
-        .buttonDel{
-            padding: 5px 10px;
-            background-color:red;
-            border: 2px solid red;
-            color:white;
-            border-radius: 5px;
-            cursor: pointer;
-            padding-left:20px;
-            padding-right:20px;
+    /* Nav */
+    nav.navbar {
+        background-color: rgba(88, 95, 233, 1);
+    }
 
-        }
-        .buttonDel:hover{
-            padding: 5px 10px;
-            border: 2px solid red;
-            background-color:transparent;
-            border-radius: 5px;
-            color:red;
-            cursor: pointer;
-            padding-left:20px;
-            padding-right:20px;
-        }
+    nav.navbar a {
+        color: white;
+    }
 
-        .button{
-            padding: 5px 10px;
-            background-color:#00897B;
-            border: 2px solid #00897B;
-            color:white;
-            border-radius: 5px;
-            cursor: pointer;
-            padding-left:20px;
-            padding-right:20px;
+    nav.navbar a:hover {
+        color: red;
+    }
+    /* button */
+    .buttonDel{
+        padding: 5px 10px;
+        background-color:red;
+        border: 2px solid red;
+        color:white;
+        border-radius: 5px;
+        cursor: pointer;
+        padding-left:20px;
+        padding-right:20px;
 
-        }
-        .button:hover{
-            padding: 5px 10px;
-            border: 2px solid #00897B;
-            background-color:transparent;
-            border-radius: 5px;
-            color:#00897B;
-            cursor: pointer;
-            padding-left:20px;
-            padding-right:20px;
-        }
+    }
+    .buttonDel:hover{
+        padding: 5px 10px;
+        border: 2px solid red;
+        background-color:transparent;
+        border-radius: 5px;
+        color:red;
+        cursor: pointer;
+        padding-left:20px;
+        padding-right:20px;
+    }
 
-        
+    .button{
+        padding: 5px 10px;
+        background-color:rgba(88, 95, 233, 1);
+        border: 2px solid rgba(88, 95, 233, 1);
+        color:white;
+        border-radius: 5px;
+        cursor: pointer;
+        padding-left:20px;
+        padding-right:20px;
 
+    }
+    .button:hover{
+        padding: 5px 10px;
+        border: 2px solid rgba(88, 95, 233, 1);
+        background-color:transparent;
+        border-radius: 5px;
+        color:rgba(88, 95, 233, 1);
+        cursor: pointer;
+        padding-left:20px;
+        padding-right:20px;
+    }
     </style>
 </head>
 <body>
@@ -195,7 +192,7 @@
                         </center>
                         <h3 class="text-center mt-3">Admin</h3>
                         <li class="nav-item">
-                            <a class="nav-link mt-3" onclick="#">
+                            <a class="nav-link mt-3" href="{{ route('dashboardAdmin') }}">
                                 <i class="fas fa-user" style="margin-right:15px;"></i>Dokter
                             </a>
                         </li>
@@ -210,7 +207,7 @@
         @csrf
         @method('PUT')
         <h2 class="AkunHead fw-semibold mt-5 " style="text-align:center; margin-bottom:40px;;">
-            Edit Doctor Account 
+            Edit Doctor Account
         </h2>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
             <input type="text" class="form-control" placeholder="NIP" aria-label="NIP" value="{{ $data->nip }}" name="NIP" aria-describedby="basic-addon1" />

@@ -40,6 +40,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -47,6 +48,10 @@ return [
         'doctor' => [
             'driver' => 'session',
             'provider' => 'doctors',
+        ],
+        'pasien' => [
+            'driver' => 'session',
+            'provider' => 'pasiens',
         ],
     ],
 
@@ -78,7 +83,11 @@ return [
         ],
         'doctors' => [
             'driver' => 'eloquent',
-            'model' => App\Models\doctorModel::class, // Ganti dengan model yang sesuai untuk admin
+            'model' => App\Models\Doctor::class, // Ganti dengan model yang sesuai untuk admin
+        ],
+        'pasiens' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pasien::class, // Ganti dengan model yang sesuai untuk admin
         ],
 
         // 'users' => [

@@ -23,13 +23,13 @@
                                 <a class="nav-link active mx-lg-2" aria-current="page" href="#">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="#">About</a>
+                                <a class="nav-link mx-lg-2" href="/#about">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="#">Contact</a>
+                                <a class="nav-link mx-lg-2" href="/#contact">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="#">Feature</a>
+                                <a class="nav-link mx-lg-2" href="/#fitur">Feature</a>
                             </li>
                         </ul>
                     </div>
@@ -42,7 +42,7 @@
         </nav>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
+
     <script>
         var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
         var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
