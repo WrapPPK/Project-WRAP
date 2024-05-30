@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-3" style="padding-top:20px;">
                         <div class="Profile" style="margin-bottom:10px; text-align: center;">
-                            <img src="{{ asset('images/Dokter3.jpg') }}" alt="Doctor Image" class="img-fluid">
+                            <img src="{{ $doctor->photo }}" alt="Doctor Image" class="img-fluid">
                         </div>
                     </div>
                     <div class="col-8" style="margin-left:20px;margin-top:10px;">
@@ -21,19 +21,19 @@
                             <div class="row pt-2">
                                 <div class="col-md">
                                     <label for="nameDokter" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Name</label>
-                                    <input type="text" value="{{ $doctor->name }}" name="nameDokter" id="nameDokter" class="form-control" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
+                                    <input type="text" value="{{ $doctor->name }}" name="nameDokter" id="nameDokter" class="form-control" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;" readonly>
                                 </div>
                             </div>
                             <div class="row pt-2">
                                 <div class="col-md">
                                     <label for="emailDokter" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Email</label>
-                                    <input type="text" value="{{ $doctor->email }}" name="emailDokter" id="emailDokter" class="form-control" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;">
+                                    <input type="text" value="{{ $doctor->email }}" name="emailDokter" id="emailDokter" class="form-control" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;" readonly>
                                 </div>
                             </div>
                             <div class="row pt-2">
                                 <div class="col-md">
                                     <label for="nikDokter" class="form-label" style="color: rgba(34, 101, 151, 1); font-weight: 700;">Nip</label>
-                                    <input type="text" value="{{ $doctor->nip }}" name="nikDokter" id="nikDokter" class="form-control" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;" required>
+                                    <input type="text" value="{{ $doctor->nip }}" name="nikDokter" id="nikDokter" class="form-control" style="border-color: rgba(34, 101, 151, 1); border-width: 3px;" required readonly>
                                 </div>
                             </div>
                         </form>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Judul Halaman Anda</title>
+    <title>Edit Admin Page</title>
 
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -186,11 +186,11 @@
                 <div class="position-sticky">
                     <ul class="nav flex-column mt-5">
                         <center>
-                            <div class="gambar_profile mt-4 text-center" style="width:80px;">
-                                <img src="#" alt="Image Alt Text" class="img-fluid">
-                            </div>
+                            <a class="navbar-brand me-auto" href="{{ route('dashboardAdmin') }}">
+                                <img src="images/RespiraCareLogo.png" alt="RespiraCare Logo" style="height: 150px; width: 150px;">
+                            </a>
                         </center>
-                        <h3 class="text-center mt-3">Admin</h3>
+                        {{-- <h3 class="text-center mt-3">Admin</h3> --}}
                         <li class="nav-item">
                             <a class="nav-link mt-3" href="{{ route('dashboardAdmin') }}">
                                 <i class="fas fa-user" style="margin-right:15px;"></i>Dokter
@@ -216,10 +216,10 @@
             <input type="text" class="form-control" placeholder="Name" aria-label="Name" value="{{ $data->name }}" name="Name" aria-describedby="basic-addon1" />
         </div>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
-            <input type="text" class="form-control" placeholder="Email" aria-label="Email" name="Email" value="{{ $data->email }}" aria-describedby="basic-addon1" />
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email" name="Email" value="{{ $data->email }}" aria-describedby="basic-addon1" readonly/>
         </div>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
-            <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="Password" value="{{ $data->password }}"  aria-describedby="basic-addon1" />
+            <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="Password" value="{{ $data->password }}"  aria-describedby="basic-addon1" readonly/>
         </div>
 
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">Upload photo</div>

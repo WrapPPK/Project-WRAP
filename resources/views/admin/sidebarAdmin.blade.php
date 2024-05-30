@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Judul Halaman Anda</title>
+    <title>Admin Page</title>
 
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -48,11 +48,11 @@
                 <div class="position-sticky">
                     <ul class="nav flex-column mt-5">
                         <center>
-                            <div class="gambar_profile mt-4 text-center" style="width:80px;">
-                                <img src="#" alt="Image Alt Text" class="img-fluid">
-                            </div>
+                            <a class="navbar-brand me-auto" href="{{ route('dashboardAdmin') }}">
+                                <img src="images/RespiraCareLogo.png" alt="RespiraCare Logo" style="height: 180px; width: 180px;">
+                            </a>
                         </center>
-                        <h3 class="text-center mt-3">Admin</h3>
+                        {{-- <h3 class="text-center mt-3">Admin</h3> --}}
                         <li class="nav-item">
                             <a class="nav-link mt-3" href="{{ route('dashboardAdmin') }}">
                                 <i class="fas fa-user" style="margin-right:15px;"></i>Dokter

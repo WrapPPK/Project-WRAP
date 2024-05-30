@@ -11,7 +11,9 @@
     <div class="container-fluid px-5">
         <nav class="navbar navbar-expand-lg fixed-top mb-4 px-5">
             <div class="container-fluid">
-                <a class="navbar-brand me-auto" href="#">Logo</a>
+                <a class="navbar-brand me-auto" href="#">
+                    <img src="images/RespiraCareLogo.png" alt="RespiraCare Logo" style="height: 130px; width: 130px;">
+                </a>
                 <div class="offcanvas offcanvas-end" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>

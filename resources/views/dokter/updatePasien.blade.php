@@ -38,11 +38,11 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
-            <form action="/logout" method="POST">
+            {{-- <form action="/logout" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-success border border-white"
                     style="background-color: #c90000">Kembali</button>
-            </form>
+            </form> --}}
         </div>
     </nav>
     <div class="container-fluid" style="margin-top: 100px; margin-bottom: 150px">

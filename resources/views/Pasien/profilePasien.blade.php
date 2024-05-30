@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="Profile">
-                                    <img src="images/Dokter3.jpg" alt="">
+                                    <img src="{{$pasien->photo}}" alt="">
                                 </div>
                             </div>
                             <div class="col-8" style="padding-bottom:20px;padding-top:10px">
