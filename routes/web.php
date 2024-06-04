@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\WaktuMinumController;
+
 
 Route::get('/', function () {
     // return view('auth.regisPasien');
@@ -31,8 +33,16 @@ Route::get('/loginPasien', [pasienController::class, 'index'])->name('loginPasie
 Route::post('/pasien', [pasienController::class, 'store'])->name('pasien.store');
 Route::post('/dashPasien', [pasienController::class, 'authenticate'])->name('dashPasien');
 Route::get('/dashboardPasien', [pasienController::class, 'dashboardPasienView'])->name('dashboardPasien');
-// profile Dokter
+// table pasien
+Route::get('/waktu-minum', [WaktuMinumController::class, 'viewtableObat'])->name('waktuMinum.viewtableObat');
+// profile pasien
 Route::get('/profilePasien', [PasienController::class, 'showProfile'])->name('profilePasien');
+// Modal tambah control obat
+Route::post('/waktu-minum', [WaktuMinumController::class, 'store'])->name('waktu_minum.store');
+Route::get('/pasiens/{id}/tambahData1', [PasienController::class, 'viewedit1'])->name('pasiens.edit1');
+Route::get('/pasiens/{id}/tambahData2', [PasienController::class, 'viewedit2'])->name('pasiens.edit2');
+Route::put('/pasiens/{id}/tambah1', [PasienController::class, 'tambah1'])->name('pasiens.tambah1');
+Route::put('/pasiens/{id}/tambah2', [PasienController::class, 'tambah2'])->name('pasiens.tambah2');
 // logout
 Route::get('/logout', [PasienController::class, 'logout'])->name('logout');
 
@@ -70,6 +80,7 @@ Route::get('/doctor/{id}/edit', [adminController::class, 'edit'])->name('doctor.
 Route::put('/doctor/{id}/edit', [adminController::class, 'update'])->name('doctor.update');
 // logout admin
 Route::get('/logout', [adminController::class, 'logout'])->name('logout');
+
 
 
 

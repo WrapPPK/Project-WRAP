@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
+use App\Models\WaktuMinum;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
 class Pasien extends Model implements AuthenticatableContract
@@ -22,4 +23,9 @@ class Pasien extends Model implements AuthenticatableContract
         'password',
         'remember_token',
     ];
+
+    public function waktuMinum()
+    {
+        return $this->hasMany(WaktuMinum::class, 'id', 'id');
+    }
 }
