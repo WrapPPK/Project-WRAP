@@ -26,6 +26,6 @@ class Pasien extends Model implements AuthenticatableContract
 
     public function waktuMinum()
     {
-        return $this->hasMany(WaktuMinum::class, 'id', 'id');
+        return $this->hasMany(WaktuMinum::class, 'id');
     }
 }

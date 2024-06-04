@@ -45,15 +45,13 @@ class WaktuMinumController extends Controller{
     public function viewtableObat()
     {
         $userId = Auth::guard('pasien')->id();
+
+        // Mengambil data waktu minum berdasarkan ID pasien yang sedang login
         $pasien = Pasien::with('waktuMinum')->find($userId);
 
-        if (!$pasien) {
-            return redirect()->route('dashboardPasien')->with('error', 'Data pasien tidak ditemukan.');
-        }
+        // Akses data waktu minum melalui relasi waktuMinum
+        $waktuMinum = $pasien->waktuMinum;
 
-        $waktuMinum = $pasien->WaktuMinum;
-
-        return view('Pasien.DashboardPasien', compact('waktuMinum'));
-    
+        return view('waktu_minum.index', compact('waktuMinum'));
     }
 }

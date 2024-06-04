@@ -24,6 +24,6 @@ class WaktuMinum extends Model
     // Relasi dengan model User (jika diperlukan)
     public function userPasien()
     {
-        return $this->belongsTo(Pasien::class, 'pasien_id', 'id');
+        return $this->belongsTo(Pasien::class, 'id');
     }
 }

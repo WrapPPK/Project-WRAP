@@ -1,61 +1,57 @@
 @include('Pasien.headerPasien')
     @include('Pasien.sidebar&navbar')
-    <div class="main p-3">
-        <div class="board" style="margin-top:70px;">
-            <div class="breadcrums">
-                <h1>Welcome,</h1>
-                @if (Auth::guard('pasien')->check())
+        <div class="main p-3">
+            <dir class="board" style="margin-top:70px;">
+                <div class="breadcrums">
+                    <h1>Welcome,</h1>
+                    @if (Auth::guard('pasien')->check())
                     <h4>{{ Auth::guard('pasien')->user()->name }}</h4>
-                @endif
-            </div>
-        </div>
-        <div class="board">
-            <div class="textheadertable" style="padding:20px;">
-                <div id="test" style="float:left;">
-                    <h1>Control Patient</h1>
-                </div>
-                <div style="float:right;">
-                    <button type="button" class="btn btn-primary" onclick="showTambahWaktuMinumModal()">+ Tambah Waktu Minum</button>
-                </div>
-                <div style="clear:both;"></div>
-            </div>
-            <table width="100%">
-                <thead>
-                    <tr>
-                        <th>Hari</th>
-                        <th>Sudah Minum</th>
-                        <th>Bukti</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php
-                        $waktuMinum = App\Models\Pasien::all();
-                    @endphp
-                    @if($waktuMinum->isNotEmpty())
-                        @foreach($waktuMinum as $data)
-                            <tr>
-                                <td>{{ $data->hari }}</td>
-                                <td>{{ $data->sudah_minum ? 'Sudah' : 'Belum' }}</td>
-                                <td>
-                                    @if($data->bukti_minum)
-                                        <a href="{{ asset('storage/' . $data->bukti_minum) }}" target="_blank">
-                                            <img src="{{ asset('storage/' . $data->bukti_minum) }}" alt="Bukti Minum" style="max-width: 100px;">
-                                        </a>
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td colspan="3">Data tidak ditemukan</td>
-                        </tr>
                     @endif
-                </tbody>
-            </table>
+                </div>
+            </dir>
+            <dir class="board">
+                <div class="textheadertable" style="padding:20px;">
+                    <div id="test" style="float:left;">
+                        <h1>Control Patient</h1>
+                    </div>
+                    <div style="float:right;">
+                        <button type="button" class="btn btn-primary" onclick="showTambahWaktuMinumModal()">+ Tambah Waktu Minum</button>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <th>Hari</th>
+                            <th>Sudah Minum</th>
+                            <th>Bukti</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @php
+                        $pasien = Auth::guard('pasien')->user();
+                        $waktuMinum = $pasien->waktuMinum()->get();
+                    @endphp
+
+                    @foreach ($waktuMinum as $waktu)
+                        <tr>
+                            <td>{{ $waktu->hari }}</td>
+                            <td>{{ $waktu->sudah_minum ? 'Sudah' : 'Belum' }}</td>
+                            <td>
+                                @if($waktu->bukti_minum)
+                                    <a href="{{ asset('storage/' . $waktu->bukti_minum) }}" target="_blank">
+                                        <img src="{{ asset('storage/' . $waktu->bukti_minum) }}" alt="Bukti Minum" style="max-width: 100px;">
+                                    </a>
+                                @else
+                                    -
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </dir>
         </div>
-    </div>
 
         <!-- Modal -->
         <div class="modal fade" id="tambahWaktuMinumModal" tabindex="-1" aria-labelledby="tambahWaktuMinumModalLabel" aria-hidden="true">
