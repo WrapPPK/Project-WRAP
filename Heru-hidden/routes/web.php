@@ -10,6 +10,7 @@ use App\Http\Controllers\WaktuMinumController;
 use App\Http\Controllers\KepatuhanController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Password;
 
 Route::get('/', function () {
     // return view('auth.regisPasien');
@@ -96,6 +97,20 @@ Route::put('/doctor/{id}/edit', [adminController::class, 'update'])->name('docto
 // logout admin
 Route::get('/logout', [adminController::class, 'logout'])->name('logout');
 
+
+// forgot pass
+
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+ 
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+ 
+    return $status === Password::RESET_LINK_SENT
+                ? back()->with(['status' => __($status)])
+                : back()->withErrors(['email' => __($status)]);
+})->middleware('guest')->name('password.email');
 
 
 

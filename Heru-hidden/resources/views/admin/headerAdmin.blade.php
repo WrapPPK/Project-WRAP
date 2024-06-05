@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
     <!-- css -->
+    <link href="css/styleDokter.css" rel="stylesheet">
     <link href="css/styleAdmin.css" rel="stylesheet">
 
     <!-- Datables -->
