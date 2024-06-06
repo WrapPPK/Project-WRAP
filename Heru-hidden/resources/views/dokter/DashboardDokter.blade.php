@@ -9,6 +9,7 @@
                     @endif
                 </div>
             </dir>
+            
             {{-- <div class="row justify-content-bettwen">
                 <div class="col-md-6">
                     <div class="card">
@@ -27,24 +28,6 @@
                     </div>
                 </div>
             </div> --}}
-            <div class="row justify-content-bettwen">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center p-3">
-                            <h5 class="card-title">Condition Patient Data</h5>
-                            <canvas id="donutChart1"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center p-3">
-                            <h5 class="card-title">Active Patient Data</h5>
-                            <canvas id="donutChart2"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <dir class="board">
                 <div class="textheadertable" style="padding:20px;">
                     <div id="test" style="float:left;">

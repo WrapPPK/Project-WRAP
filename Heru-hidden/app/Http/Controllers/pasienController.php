@@ -80,6 +80,7 @@ class pasienController extends Controller
             'title' => 'Dashboard'
         ]);
     }
+
     public function destroy($id)
     {
         $pasien = Pasien::findOrFail($id);
@@ -105,11 +106,6 @@ class pasienController extends Controller
     {
         $pasien = Pasien::findOrFail($id);
 
-        if ($request->hasFile('photo')) {
-            $photo = $request->file('photo')->store('photos', 'public');
-            $pasien->photo = $photo;
-        }
-
         if ($request->password) {
             $pasien->password = Hash::make($request->password);
         }
@@ -124,10 +120,17 @@ class pasienController extends Controller
         $pasien->time_to_take_medicine = $request->time_to_take_medicine;
         $pasien->medication_times = $request->medication_times;
 
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/pasiens/'), $fileName);
+            $pasien->photo = 'uploads/pasiens/' . $fileName;
+        }
+
         $pasien->save();
 
         // return redirect()->route('/dashDokter')->with('success', 'Pasien berhasil dihapus');
-        return redirect()->back()->with('success', 'Doctor account created successfully!');
+        return redirect()->route('dashboardDoctor')->with('success', 'Doctor account created successfully!');
     }
     
     // profile pasien

@@ -48,7 +48,7 @@
     <div class="container-fluid" style="margin-top: 100px; margin-bottom: 150px">
         <div class="container mx-auto">
             <div class="card border-0 shadow border-radius">
-                <h2 class="text-center pt-5">Masukkan Data Pasien</h2>
+                <h2 class="text-center pt-5">Edit Data Pasien</h2>
                 <div class="card-body">
                     <form action="{{ route('pasiens.update', ['id' => $pasien->id]) }}" method="POST"
                         class="form-valid" enctype="multipart/form-data">

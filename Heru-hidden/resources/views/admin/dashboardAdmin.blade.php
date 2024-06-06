@@ -8,7 +8,7 @@
             <dir class="board">
                 <div class="textheadertable" style="margin-bottom:20px;">
                     <div id="test" style="display: flex; justify-content: flex-end; margin-top: 10px;">
-                        <input style="margin-right:630px" type="text" id="searchInput" placeholder="Search for names.." onkeyup="searchTable()">
+                        <input style="margin-right:890px" type="text" id="searchInput" placeholder="Search for names.." onkeyup="searchTable()">
                         <button style="padding-right:20px" type="button" class="btn btn-primary" onclick="location.href='/insert'">+ Tambah</button>
                     </div>
                     <div style="clear:both;"></div>

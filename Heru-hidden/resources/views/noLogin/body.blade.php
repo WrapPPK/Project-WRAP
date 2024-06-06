@@ -31,14 +31,17 @@
         </div>
     </div>
 
-    <div class="container-fluid" style="padding-bottom:100px">
+    <div id="roles" class="container-fluid" style="padding-bottom:100px">
         <div class="row text-center justify-content-center" style="padding-top:100px;padding-bottom:50px"
             data-aos="fade-down" data-aos-duration="1000">
             <div class="col"
                 style="padding-bottom:30px; font-size: 60px; font-weight:bold; color: rgba(34, 101, 151, 1)">
-                Why Choose Us?
+                Role
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis arcu ac fermentum placerat.</p>
+            <p>Peran merupakan elemen penting dalam organisasi kami, yang mencakup berbagai tanggung jawab dan
+                harapan.</p>
+            <p>Ini dirancang untuk memanfaatkan kekuatan individu, mendorong pertumbuhan profesional, dan
+                berkontribusi pada kesuksesan tim secara keseluruhan.</p>
         </div>
         <div class="row row-cols-3-cols-md-3 g-4" style="padding-left:100px;padding-right:100px;" data-aos="fade-down"
             data-aos-duration="500">
@@ -46,10 +49,20 @@
             <div class="col">
                 <div class="card shadow" style="width: 400px; height: 400px;">
                     <div class="card-body d-flex flex-column justify-content-center">
-                        <h5 class="card-title"><i class="fas fa-user"></i><br>Lorem Ipsum</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget elit sit amet arcu
-                            volutpat tincidunt. Mauris sollicitudin metus non magna pulvinar, nec pulvinar ex aliquet.
-                            Integer id convallis metus. Proin vel justo nec velit blandit vehicula</p>
+                        <h5 class="card-title">
+                            <div class="text-container text-center">
+                                <div class="bulat">
+                                    <img src="images/heru.jpg" alt="Heru Ikhsan Maulana"
+                                        class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
+                                </div>
+                            </div>
+                            Heru Ikhsan Maulana
+                        </h5>
+                        <p>Heru Ikhsan Maulana adalah Scrum Master, memastikan bahwa tim mengikuti prinsip-prinsip
+                            tangkas dan
+                            praktik. Dia memfasilitasi pertemuan, menghilangkan hambatan, dan membantu tim untuk
+                            meningkatkannya
+                            proses dan produktivitas.</p>
                     </div>
                 </div>
             </div>
@@ -57,10 +70,19 @@
             <div class="col">
                 <div class="card shadow" style="width: 400px; height: 400px;">
                     <div class="card-body d-flex flex-column justify-content-center">
-                        <h5 class="card-title"><i class="fas fa-user"></i><br>Lorem Ipsum</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget elit sit amet arcu
-                            volutpat tincidunt. Mauris sollicitudin metus non magna pulvinar, nec pulvinar ex aliquet.
-                            Integer id convallis metus. Proin vel justo nec velit blandit vehicula</p>
+                        <h5 class="card-title">
+                            <div class="text-container text-center">
+                                <div class="bulat">
+                                    <img src="images/risky.png" alt="Heru Ikhsan Maulana"
+                                        class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
+                                </div>
+                            </div>
+                            Muhammad Risky Farhan
+                        </h5>
+                        <p>Muhammad Risky Farhan adalah Front End Developer, bertanggung jawab untuk merancang dan
+                            melaksanakan
+                            antarmuka pengguna. Ia memastikan aplikasinya ramah pengguna, responsif, dan
+                            menarik secara visual.</p>
                     </div>
                 </div>
             </div>
@@ -68,52 +90,88 @@
             <div class="col">
                 <div class="card shadow" style="width: 400px; height: 400px;">
                     <div class="card-body d-flex flex-column justify-content-center">
-                        <h5 class="card-title"><i class="fas fa-user"></i><br>Lorem Ipsum</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget elit sit amet arcu
-                            volutpat tincidunt. Mauris sollicitudin metus non magna pulvinar, nec pulvinar ex aliquet.
-                            Integer id convallis metus. Proin vel justo nec velit blandit vehicula</p>
+                        <h5 class="card-title">
+                            <div class="text-container text-center">
+                                <div class="bulat">
+                                    <img src="images/bimo.png" alt="Heru Ikhsan Maulana"
+                                        class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
+                                </div>
+                            </div>
+                            Bimo Zachriansyah Wicaksono
+                        </h5>
+                        <p>Bimo Zachriansyah Wicaksono adalah AI Developer, berfokus pada mengintegrasikan buatan
+                            intelijen ke dalam proyek tersebut. Dia mengembangkan dan mengimplementasikan model
+                            pembelajaran mesin untuk menyempurnakannya
+                            fungsionalitas dan kecerdasan aplikasi.</p>
                     </div>
                 </div>
             </div>
+            <!-- card 4 -->
+            <div class="col">
+                <div class="card shadow" style="width: 400px; height: 400px;">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <h5 class="card-title">
+                            <div class="text-container text-center">
+                                <div class="bulat">
+                                    <img src="images/david.jpg" alt="Heru Ikhsan Maulana"
+                                        class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
+                                </div>
+                            </div>
+                            David Gholi Rahmadana
+                        </h5>
+                        <p>David Gholi Rahmadana adalah Backend Developer, bertanggung jawab atas logika sisi server dan
+                            manajemen basis data. Dia memastikan bahwa backend aplikasi kuat, aman, dan
+                            efisien menangani pemrosesan dan penyimpanan data.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-    <div class="OurFeature">
+    <div id="fitur" class="OurFeature">
         <div class="kotakputih">
             <div class="container-fluid" style="padding-bottom:100px" data-aos="fade-down" data-aos-easing="linear"
                 data-aos-duration="1000">
                 <div class="row text-center justify-content-center" style="padding-top:100px">
-                    <div id="fitur" class="col"
+                    <div class="col"
                         style="padding-bottom:30px; font-size: 60px; font-weight:bold; color: rgba(34, 101, 151, 1)">
-                        Our Feature
+                        Feature
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis arcu ac fermentum
-                        placerat.</p>
+                    <p>Aplikasi ini membantu mengontrol pernapasan dan memantau kepatuhan minum obat pasien menggunakan
+                        kecerdasan buatan.</p>
                 </div>
                 <div class="col" style="padding-left:100px;padding-right:100px;">
                     <div class="row">
                         <div class="d-flex align-items-center">
-                            <img src="images/Dokter10.png" class="rounded-start p-5" alt="..." style="width: 50%;">
+                            <img src="images/dashboardDokter.png" class="rounded-start p-5" alt="..."
+                                style="width: 50%;">
                             <div class="ms-1">
-                                <h5>Tulisan Anda di Samping Gambar</h5>
-                                <p>Deskripsi singkat di samping gambar.</p>
+                                <h5>Dashboard Dokter</h5>
+                                <p>Fitur ini dapat digunakan oleh dokter untuk membuat akun pasien, melihat data pasien,
+                                    mengedit data paseien, menghapus data pasien, serta dapat melihat
+                                    apakah pasien patuh atau tidak dalam meminum obat sesuai anjuran dokter.</p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="d-flex align-items-center justify-content-end">
                             <div class="ms-1">
-                                <h5>Tulisan Anda di Samping Gambar</h5>
-                                <p>Deskripsi singkat di samping gambar.</p>
+                                <h5>Dashboard Pasien</h5>
+                                <p>Fitur ini dapat digunakan oleh pasien untuk melakukan control minum obat, dengan cara
+                                    input data apakah telah minum obat atau belum, supaya dokter bisa tau apakah pasien
+                                    tersebut patuh minum obat atau tidak.</p>
                             </div>
-                            <img src="images/Dokter10.png" class="rounded-end p-5" alt="..." style="width: 50%;">
+                            <img src="images/dashboardPasien.png" class="rounded-end p-5" alt="..."
+                                style="width: 50%;">
                         </div>
                     </div>
                     <div class="row">
                         <div class="d-flex align-items-center">
-                            <img src="images/Dokter10.png" class="rounded-start p-5" alt="..." style="width: 50%;">
+                            <img src="images/AI_kepatuhan.jpg" class="rounded-start p-5" alt="..."
+                                style="width: 50%;">
                             <div class="ms-1">
-                                <h5>Tulisan Anda di Samping Gambar</h5>
-                                <p>Deskripsi singkat di samping gambar.</p>
+                                <h5>AI Kepatuhan</h5>
+                                <p>Fitur yang digunakan untuk mengecek pasien patuh atau tidak dalam informasi pasien yang diterima dokter menggunakan teknologi AI (Kecerdasan Buatan).</p>
                             </div>
                         </div>
                     </div>
@@ -123,80 +181,48 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row text-center justify-content-center" style="padding:100px" data-aos="fade-down"
+        <div class="row text-center justify-content-center about-section" data-aos="fade-down"
             data-aos-duration="1000">
-            <div id="about" class="col"
+            <div id="tentang" class="col"
                 style="padding-bottom:30px; font-size: 60px; font-weight:bold; color: rgba(34, 101, 151, 1)">
                 About Us
             </div>
-            <p data-aos="fade-down" data-aos-duration="500">RespiraCare is an innovative application specifically
-                designed to help patients experiencing respiratory disorders.</p>
-                <p> By utilizing the latest technology, we are
-                    committed to providing effective and easy-to-use solutions for those in need of respiratory care.</p>
-        </div>
-    </div>
-
-    <div class="Aboutus">
-        <div class="kotakputih">
-            <div class="container-fluid" style="padding-bottom:100px">
-                <div class="row text-center justify-content-center" style="padding-top:100px" data-aos="fade-down"
-                    data-aos-duration="1000">
-                    <div class="col"
-                        style="padding-bottom:30px; font-size: 60px; font-weight:bold; color: rgba(34, 101, 151, 1)">
-                        Our Teams
-                    </div>
-                    <p>We are a team of talented and spatial individuals,</p>
-                    <p>Risky for Frontend Developer</p>
-                    <p>Heru for Scrum Master</p>
-                    <p>Bimo for Ai Developer</p>
-                    <p>David for Backend Developer</p>
-                </div>
-                <div class="row row-cols-4-cols-md-3 g-4" style="padding-left:100px;padding-right:100px;"
-                    data-aos="fade-down" data-aos-duration="500">
-                    <div class="col">
-                        <div class="text-container p-5 text-align-center">
-                            <div class="bulat">
-                                <img src="images/risky.png" alt="Muhammad Risky Farhan"
-                                    class="img-fluid rounded-circle">
-                            </div>
-                            <p class="mt-3">Muhammad Risky Farhan</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="text-container p-5 text-align-center">
-                            <div class="bulat">
-                                <img src="images/heru.jpg" alt="Heru Ikhsan Maulana"
-                                    class="img-fluid rounded-circle">
-                            </div>
-                            <p class="mt-3">Heru Ikhsan Maulana</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="text-container p-5 text-align-center">
-                            <div class="bulat">
-                                <img src="images/bimo.png" alt="Bimo Zachriansyah wicaksono"
-                                    class="img-fluid rounded-circle">
-                            </div>
-                            <p class="mt-3">Bimo Zachriansyah wicaksono</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="text-container p-5 text-align-center">
-                            <div class="bulat">
-                                <img src="images/david.jpg" alt="David Gholi Rahmadana"
-                                    class="img-fluid rounded-circle">
-                            </div>
-                            <p class="mt-3">David Gholi Rahmadana</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <p class="about-text">RespiraCare adalah aplikasi inovatif yang dirancang khusus untuk membantu pasien yang
+                mengalami gangguan pernafasan
+                gangguan. Misi kami adalah memberdayakan individu dengan alat dan sumber daya yang mereka perlukan untuk
+                mengelola kehidupan mereka
+                kesehatan pernapasan secara efektif. Dengan memanfaatkan teknologi terkini, kami berkomitmen untuk
+                menyediakan
+                solusi yang efektif dan mudah digunakan untuk
+                mereka yang membutuhkan perawatan pernapasan. Platform kami mengintegrasikan fitur-fitur canggih seperti
+                real-time
+                pemantauan, wawasan kesehatan yang dipersonalisasi, dan komunikasi yang lancar dengan penyedia layanan
+                kesehatan, memastikan
+                bahwa pengguna kami menerima standar perawatan tertinggi. Di RespiraCare, kami memahami tantangan yang
+                dihadapi
+                oleh individu dengan kondisi pernafasan. Karena itu,
+                tim ahli kami, termasuk profesional medis dan inovator teknologi, bekerja tanpa lelah untuk
+                mengembangkan dan
+                menyempurnakan aplikasi kami untuk memenuhi beragam kebutuhan pengguna kami. Tujuan kami adalah untuk
+                meningkatkan kualitas
+                hidup bagi pengguna kami dengan menjadikan layanan pernapasan lebih mudah diakses dan dikelola. Kami
+                percaya pada a
+                pendekatan yang berpusat pada pasien, di mana masukan dan pengalaman pengguna membentuk kelangsungan
+                kami
+                perkembangan. Komitmen terhadap perbaikan terus-menerus ini memastikan bahwa aplikasi kami tetap pada
+                standarnya
+                terdepan dalam solusi perawatan pernafasan. Apakah Anda sedang menghadapi masalah pernapasan kronis atau
+                pulih dari kondisi sementara, RespiraCare hadir untuk mendukung Anda di setiap langkah. Bergabunglah
+                dengan kami
+                dalam perjalanan kami merevolusi perawatan pernafasan dan merasakan perbedaan teknologi tersebut
+                dan perhatian yang penuh kasih dapat menghasilkan dalam hidup Anda.</p>
         </div>
     </div>
 
     <style>
         .text-container {
             text-align: center;
+            margin-bottom: 5px;
         }
 
         .bulat {
@@ -205,9 +231,9 @@
             align-items: center;
             border-radius: 50%;
             overflow: hidden;
-            width: 150px;
+            width: 80px;
             /* Adjust size as needed */
-            height: 150px;
+            height: 80px;
             /* Adjust size as needed */
             background-color: #f0f0f0;
             /* Fallback color if no image */
@@ -217,6 +243,16 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .about-section {
+            padding: 100px;
+        }
+
+        .about-text {
+            margin-left: 10px;
+            margin-right: 10px;
+            text-align: justify;
         }
     </style>
 

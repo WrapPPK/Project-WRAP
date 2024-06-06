@@ -187,7 +187,7 @@
                     <ul class="nav flex-column mt-5">
                         <center>
                             <a class="navbar-brand me-auto" href="{{ route('dashboardAdmin') }}">
-                                <img src="images/RespiraCareLogo.png" alt="RespiraCare Logo" style="height: 150px; width: 150px;">
+                                <img src={{ url("images/RespiraCareLogo.png") }} alt="RespiraCare Logo" style="height: 180px; width: 180px;">
                             </a>
                         </center>
                         {{-- <h3 class="text-center mt-3">Admin</h3> --}}
@@ -209,20 +209,24 @@
         <h2 class="AkunHead fw-semibold mt-5 " style="text-align:center; margin-bottom:40px;;">
             Edit Doctor Account
         </h2>
-        <div class="input-group mb-4 mx-auto" style="max-width: 568px">
+        <div class="input-group mb-1 mx-auto" style="max-width: 568px">NIP</div>
+        <div class="input-group mb-2 mx-auto" style="max-width: 568px">
             <input type="text" class="form-control" placeholder="NIP" aria-label="NIP" value="{{ $data->nip }}" name="NIP" aria-describedby="basic-addon1" />
         </div>
-        <div class="input-group mb-4 mx-auto" style="max-width: 568px">
+        <div class="input-group mb-1 mx-auto" style="max-width: 568px">Nama</div>
+        <div class="input-group mb-2 mx-auto" style="max-width: 568px">
             <input type="text" class="form-control" placeholder="Name" aria-label="Name" value="{{ $data->name }}" name="Name" aria-describedby="basic-addon1" />
         </div>
-        <div class="input-group mb-4 mx-auto" style="max-width: 568px">
+        <div class="input-group mb-1 mx-auto" style="max-width: 568px">Email</div>
+        <div class="input-group mb-2 mx-auto" style="max-width: 568px">
             <input type="text" class="form-control" placeholder="Email" aria-label="Email" name="Email" value="{{ $data->email }}" aria-describedby="basic-addon1" readonly/>
         </div>
-        <div class="input-group mb-4 mx-auto" style="max-width: 568px">
+        {{-- <div class="input-group mb-1 mx-auto" style="max-width: 568px">Password</div>
+        <div class="input-group mb-2 mx-auto" style="max-width: 568px">
             <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="Password" value="{{ $data->password }}"  aria-describedby="basic-addon1" readonly/>
-        </div>
+        </div> --}}
 
-        <div class="input-group mb-4 mx-auto" style="max-width: 568px">Upload photo</div>
+        <div class="input-group mb-2 mx-auto" style="max-width: 568px">Upload photo</div>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
             <input type="file" name="uploadFoto"  size="20" />
         </div>

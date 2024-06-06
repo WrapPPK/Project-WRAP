@@ -120,147 +120,149 @@
                             </div>
                         </div>
                     </form>
-                    <div class="container mt-5">
-                        <h1 class="mt-5">Upload CSV File</h1>
-                        <form method="POST" action="{{ route('uploadCsv') }}" enctype="multipart/form-data">
-                            @csrf
-                            @method('POST')
-                            <div class="form-group">
-                                <label for="file">Upload File Excel:</label>
-                                <input type="file" class="form-control" id="file" name="file" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Upload</button>
-                        </form>
-                    
-                        @if(session('success'))
-                            <div class="alert alert-success mt-3">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-                    
-                        @if(session('error'))
-                            <div class="alert alert-danger mt-3">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-                    
-                        @if(session('complianceData'))
-                            <div class="mt-5">
-                                <h2>Compliance Data</h2>
-                                <table class="table table-bordered">
-                                    <thead>
+                </div>
+            </div>
+            <div class="card border-0 shadow border-radius" style="margin-top: 30px;">
+                <div class="container">
+                    <h2 class="text-center pt-3">Upload Data Kepatuhan</h2>
+                    <form method="POST" action="{{ route('uploadCsv') }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('POST')
+                        <div class="form-group">
+                            <label for="file" class="mx-1">Upload File Excel:</label>
+                            <input type="file" class="form-control mt-2 mb-4" id="file" name="file" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-5">Upload</button>
+                    </form>
+                
+                    @if(session('success'))
+                        <div class="alert alert-success mt-3">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                
+                    @if(session('error'))
+                        <div class="alert alert-danger mt-3">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                
+                    @if(session('complianceData'))
+                        <div class="mt-5">
+                            <h2>Compliance Data</h2>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Hari</th>
+                                        <th>Tanggal Minum</th>
+                                        <th>Persentase Kepatuhan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $totalDays = count(session('complianceData'));
+                                        $totalPercentage = 0;
+                                    @endphp
+                                    @foreach(session('complianceData') as $data)
+                                        @php
+                                            $totalPercentage += $data['Persentase Kepatuhan'];
+                                        @endphp
                                         <tr>
-                                            <th>Hari</th>
-                                            <th>Tanggal Minum</th>
-                                            <th>Persentase Kepatuhan</th>
+                                            <td>{{ $data['Hari'] }}</td>
+                                            <td>{{ $data['Tanggal'] }}</td>
+                                            <td>{{ $data['Persentase Kepatuhan'] }}%</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $totalDays = count(session('complianceData'));
-                                            $totalPercentage = 0;
-                                        @endphp
-                                        @foreach(session('complianceData') as $data)
-                                            @php
-                                                $totalPercentage += $data['Persentase Kepatuhan'];
-                                            @endphp
-                                            <tr>
-                                                <td>{{ $data['Hari'] }}</td>
-                                                <td>{{ $data['Tanggal'] }}</td>
-                                                <td>{{ $data['Persentase Kepatuhan'] }}%</td>
-                                            </tr>
-                                        @endforeach
-                                        @php
-                                            $averageCompliance = $totalDays ? $totalPercentage / $totalDays : 0;
-                                            $complianceStatus = $averageCompliance >= 80 ? 'Patuh' : 'Tidak Patuh';
-                                        @endphp
-                                    </tbody>
-                                </table>
-                                <div class="mt-3">
-                                    <h4>Status Kepatuhan: {{ $complianceStatus }}</h4>
-                                    <p>Total Hari: {{ $totalDays }}</p>
-                                    <p>Rata-rata Persentase Kepatuhan: {{ number_format($averageCompliance, 2) }}%</p>
-                                </div>
+                                    @endforeach
+                                    @php
+                                        $averageCompliance = $totalDays ? $totalPercentage / $totalDays : 0;
+                                        $complianceStatus = $averageCompliance >= 80 ? 'Patuh' : 'Tidak Patuh';
+                                    @endphp
+                                </tbody>
+                            </table>
+                            <div class="mt-3">
+                                <h4>Status Kepatuhan: {{ $complianceStatus }}</h4>
+                                <p>Total Hari: {{ $totalDays }}</p>
+                                <p>Rata-rata Persentase Kepatuhan: {{ number_format($averageCompliance, 2) }}%</p>
                             </div>
-                        @endif
-                    </div>                                      
-                    <!-- Modal -->
-                    <div class="modal fade" id="kepatuhanModal" tabindex="-1" aria-labelledby="kepatuhanModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="kepatuhanModalLabel">Medication Adherence</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div id="medicationTimes"></div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                </div>
+                        </div>
+                    @endif
+                </div>                                      
+                <!-- Modal -->
+                <div class="modal fade" id="kepatuhanModal" tabindex="-1" aria-labelledby="kepatuhanModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="kepatuhanModalLabel">Medication Adherence</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="medicationTimes"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
-
-                    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-                        integrity="sha384-oBqDVmMz4fnFO9gybBogGzU6legyJ8/Y7D2RzA7zmObpdtIfl5Wc5c5Exnb1Anwf" crossorigin="anonymous">
-                    </script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-                        integrity="sha384-QF1FQeQRd+8ZtCp0BtxNBKhqIMrfSJpXU1p4OmJxKOxKhOg4kXvi7CFOBjcBQxaE" crossorigin="anonymous">
-                    </script>
-                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-
-                    <script>
-                        $(document).ready(function () {
-                            $('[data-bs-toggle="modal"]').on('click', function () {
-                                var pasienId = $(this).data('pasien-id');
-                                $.ajax({
-                                    url: '/kepatuhan/' + pasienId,
-                                    method: 'GET',
-                                    success: function (response) {
-                                        if (response.error) {
-                                            $('#medicationTimes').html('<p>' + response.error + '</p>');
-                                        } else {
-                                            var medicationTimesHtml = '<ul>';
-                                            response.medicationTimes.forEach(function (time) {
-                                                medicationTimesHtml += '<li>' + time + '</li>';
-                                            });
-                                            medicationTimesHtml += '</ul>';
-                                            $('#medicationTimes').html(medicationTimesHtml);
-                                        }
-                                    }
-                                });
-                            });
-                        });
-                    </script>
-                    <script>
-                        $(document).ready(function() {
-                            $('#uploadForm').on('submit', function(event) {
-                                event.preventDefault();
-                                var formData = new FormData(this);
-                                $.ajax({
-                                    url: 'http://localhost:5000/api/compliance',
-                                    type: 'POST',
-                                    data: formData,
-                                    contentType: false,
-                                    processData: false,
-                                    success: function(response) {
-                                        var resultHtml = '<ul>';
-                                        $.each(response, function(patient_id, compliance_percentage) {
-                                            resultHtml += '<li>Persentase kepatuhan pasien ' + patient_id + ': ' + compliance_percentage + '%</li>';
-                                        });
-                                        resultHtml += '</ul>';
-                                        $('#result').html(resultHtml);
-                                    },
-                                    error: function(response) {
-                                        $('#result').html('<p class="text-danger">Error: ' + response.responseJSON.error + '</p>');
-                                    }
-                                });
-                            });
-                        });
-                    </script>
                 </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+                    integrity="sha384-oBqDVmMz4fnFO9gybBogGzU6legyJ8/Y7D2RzA7zmObpdtIfl5Wc5c5Exnb1Anwf" crossorigin="anonymous">
+                </script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+                    integrity="sha384-QF1FQeQRd+8ZtCp0BtxNBKhqIMrfSJpXU1p4OmJxKOxKhOg4kXvi7CFOBjcBQxaE" crossorigin="anonymous">
+                </script>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+                <script>
+                    $(document).ready(function () {
+                        $('[data-bs-toggle="modal"]').on('click', function () {
+                            var pasienId = $(this).data('pasien-id');
+                            $.ajax({
+                                url: '/kepatuhan/' + pasienId,
+                                method: 'GET',
+                                success: function (response) {
+                                    if (response.error) {
+                                        $('#medicationTimes').html('<p>' + response.error + '</p>');
+                                    } else {
+                                        var medicationTimesHtml = '<ul>';
+                                        response.medicationTimes.forEach(function (time) {
+                                            medicationTimesHtml += '<li>' + time + '</li>';
+                                        });
+                                        medicationTimesHtml += '</ul>';
+                                        $('#medicationTimes').html(medicationTimesHtml);
+                                    }
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <script>
+                    $(document).ready(function() {
+                        $('#uploadForm').on('submit', function(event) {
+                            event.preventDefault();
+                            var formData = new FormData(this);
+                            $.ajax({
+                                url: 'http://localhost:5000/api/compliance',
+                                type: 'POST',
+                                data: formData,
+                                contentType: false,
+                                processData: false,
+                                success: function(response) {
+                                    var resultHtml = '<ul>';
+                                    $.each(response, function(patient_id, compliance_percentage) {
+                                        resultHtml += '<li>Persentase kepatuhan pasien ' + patient_id + ': ' + compliance_percentage + '%</li>';
+                                    });
+                                    resultHtml += '</ul>';
+                                    $('#result').html(resultHtml);
+                                },
+                                error: function(response) {
+                                    $('#result').html('<p class="text-danger">Error: ' + response.responseJSON.error + '</p>');
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
         </div>
     </div>
