@@ -29,7 +29,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-lg">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/dashboardDoctor">RespiraCare</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -51,33 +51,33 @@
                     <form action="#" method="POST" class="form-valid" enctype="multipart/form-data">
                         @csrf
                         @method('GET')
-                        <input value="{{$pasien->name}}" type="text" name="name" id="inputnamaLengkap" class="form-control" required>
+                        <!-- <input value="{{$pasien->name}}" type="text" name="name" id="inputnamaLengkap" class="form-control" required> -->
                         <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputnamaLengkap" class="form-label">Name</label>
                                 <input value="{{$pasien->name}}" type="text" name="name" id="inputnamaLengkap"
-                                    class="form-control" required>
+                                    class="form-control" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label for="inputemail" class="form-label">Email</label>
-                                <input value="{{$pasien->email}}" type="email" name="email" id="inputemail" class="form-control" required>
+                                <input value="{{$pasien->email}}" readonly type="email" name="email" id="inputemail" class="form-control" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="inputpassword" class="form-label">Password</label>
                                 <div class="input-group">
-                                    <input value="" type="password" name="password" id="inputpassword" class="form-control">
+                                    <input value="" type="password" readonly name="password" id="inputpassword" class="form-control">
                                     <span class="input-group-text icon" id="id_icon"><i class="fa-regular fa-eye"></i></span>
                                 </div>
                             </div>
                         </div>
                         <div class="row pt-5">
                             <div class="col-md-4">
-                                <label for="inputUmur" class="form-label">Age</label>
-                                <input value="{{$pasien->age}}" type="text" name="age" id="inputUmur" class="form-control" required>
+                                <label for="inputUmur"  class="form-label">Age</label>
+                                <input value="{{$pasien->age}}" readonly type="text" name="age" id="inputUmur" class="form-control" required>
                             </div>
                             <div class="col-md-4">
-                                <label for="gender" class="form-label">Gender</label>
-                                <select name="gender" id="gender" class="form-select" required>
+                                <label for="gender"  class="form-label">Gender</label>
+                                <select name="gender" id="gender" class="form-select" style="pointer-events: none; touch-action: none;">
                                     <option value="" {{$pasien->gender == '' ? 'selected' : ''}}>Pilih</option>
                                     <option value="Laki-laki" {{$pasien->gender == 'Laki-laki' ? 'selected' : ''}}>Man</option>
                                     <option value="Perempuan" {{$pasien->gender == 'Perempuan' ? 'selected' : ''}}>Woman</option>
@@ -86,19 +86,19 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="inputPenyakit" class="form-label">Disease</label>
-                                <input value="{{$pasien->disease}}" type="text" name="disease" id="inputPenyakit" class="form-control" required>
+                                <input value="{{$pasien->disease}}" readonly type="text" name="disease" id="inputPenyakit" class="form-control" required>
                             </div>
                         </div>
                         <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputLamaMinumObat" class="form-label">Time to take medicine</label>
-                                <input value="{{$pasien->time_to_take_medicine}}" type="text" name="time_to_take_medicine" id="inputLamaMinumObat"
+                                <input value="{{$pasien->time_to_take_medicine}}" readonly type="text" name="time_to_take_medicine" id="inputLamaMinumObat"
                                     class="form-control" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="inputObatSehari" class="form-label">Time to take medication (/day)</label>
-                                <select name="medication_times" id="inputObatSehari" class="form-control"
-                                    style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px;">
+                                <select name="medication_times"  id="inputObatSehari" class="form-control"
+                                    style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px; pointer-events: none; touch-action: none;">
                                     <option value="" {{$pasien->medication_times == '' ? 'selected' : ''}}>Choose Here</option>
                                     <option value="1" {{$pasien->medication_times == '1' ? 'selected' : ''}}>1</option>
                                     <option value="2" {{$pasien->medication_times == '2' ? 'selected' : ''}}>2</option>
@@ -107,10 +107,10 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="status" class="form-label">Status</label>
-                                <select name="status" id="status" class="form-select" style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px;">
+                                <select name="status" id="status"  class="form-select" style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px; pointer-events: none; touch-action: none;">
                                     <option value="" {{$pasien->status == '' ? 'selected' : ''}}>Choose Here</option>
-                                    <option value="Healthy" {{$pasien->status == 'Healthy' ? 'selected' : ''}}>Healthy</option>
-                                    <option value="Sick" {{$pasien->status == 'Sick' ? 'selected' : ''}}>Sick</option>
+                                    <option value="Active" {{$pasien->status == 'Active' ? 'selected' : ''}}>Active</option>
+                                    <option value="Done" {{$pasien->status == 'Done' ? 'selected' : ''}}>Done</option>
                                 </select>
                             </div>
                         </div>

@@ -21,9 +21,21 @@ class DoctorController extends Controller
 
     public function dashboardDoctorView()
     {
-        return view('dokter.dashboardDokter', [
-            'title' => 'Dashboard'
-        ]);
+        $statusPasien = Pasien::select('status', \DB::raw('count(*) as jumlah'))
+            ->groupBy('status')
+            ->get();
+        $statusLabels = $statusPasien->pluck('status');
+        $statusData = $statusPasien->pluck('jumlah');
+
+        $kondisiPasien = Pasien::select('level', \DB::raw('count(*) as jumlah'))
+            ->groupBy('level')
+            ->get();
+        $kondisiLabels = $kondisiPasien->pluck('level');
+        $kondisiData = $kondisiPasien->pluck('jumlah');
+
+        
+        
+        return view('dokter.dashboardDokter', compact('statusLabels', 'statusData', 'kondisiLabels', 'kondisiData'));
     }
 
     public function store(Request $request)

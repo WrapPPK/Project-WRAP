@@ -28,6 +28,10 @@ Route::get('/', function () {
  
 });
 
+Route::get('/regisAdmin', function () {
+    return view('auth.regisAdmin');
+});
+
 Route::post('/upload-csv', [UploadController::class, 'uploadCsv'])->name('uploadCsv');
 
 // Rute untuk menampilkan info pasien (yang sudah ada)
