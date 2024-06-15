@@ -1,9 +1,10 @@
-/* Navbar */
-
-.navbar{
-    background-color: white;
-    height: 80px;
+body {
+    font-family: "Outfit", sans-serif;
+    background-color: rgba(243, 249, 251, 1);
+    color: #333;
 }
+
+
 
 .login-button {
     background-color: transparent;
@@ -24,14 +25,6 @@
 
 }
 
-.navbar-toggler{
-    border: none;
-}
-
-.navbar-toggler:focus, .btn-close:focus{
-    box-shadow: none;
-    outline: none;
-}
 
 .nav-link{
     color: rgba(17, 63, 103, 1);
@@ -71,6 +64,26 @@
 }
 
 
+/* landing foto */
+.landing {
+    height: 550px;
+    position: relative;
+    overflow: hidden;
+}
+
+.content {
+    background: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent background for better text readability */
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    z-index: 1; /* Ensure content is above the image */
+}
+
+.img-fluid.position-absolute {
+    top: 0;
+    left: 0;
+}
+
 
 
 
@@ -78,8 +91,8 @@
 
 /* Why choose us */
 .card {
-    width: 400px;
-    height: 500px;
+    width: 300px;
+    height: 300px;
     overflow: hidden;
     position: relative;
 }
@@ -92,7 +105,7 @@
 
 .card-title {
     position: absolute;
-    bottom: 40%;
+    bottom: 30%;
     left: 0;
     width: 100%;
     text-align: center;
@@ -106,20 +119,21 @@
     width: 100%;
     text-align: justify;
     padding: 20px;
+    font-size: 12px;
     transition: top 0.3s ease;
 }
 
 .card-body img {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     position: absolute;
     bottom: 50%;
-    left: 38%;
+    left:40%;
     transition: bottom 0.3s ease;
 }
 
 .card-body:hover .card-title {
-    bottom: 60%;
+    bottom: 55%;
 }
 
 .card-body:hover p {

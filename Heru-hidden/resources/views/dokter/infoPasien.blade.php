@@ -43,7 +43,7 @@
             </form>
         </div>
     </nav>
-    <div class="container-fluid" style="margin-top: 50px; margin-bottom: 150px">
+    <div class="container-fluid" style="margin-top: 100px; margin-bottom: 150px">
         <div class="container mx-auto">
             <div class="card border-0 shadow border-radius">
                 <h2 class="text-center pt-5">Info Data Pasien</h2>
@@ -51,7 +51,6 @@
                     <form action="#" method="POST" class="form-valid" enctype="multipart/form-data">
                         @csrf
                         @method('GET')
-                        <!-- <input value="{{$pasien->name}}" type="text" name="name" id="inputnamaLengkap" class="form-control" required> -->
                         <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputnamaLengkap" class="form-label">Name</label>
@@ -63,11 +62,8 @@
                                 <input value="{{$pasien->email}}" readonly type="email" name="email" id="inputemail" class="form-control" required>
                             </div>
                             <div class="col-md-4">
-                                <label for="inputpassword" class="form-label">Password</label>
-                                <div class="input-group">
-                                    <input value="" type="password" readonly name="password" id="inputpassword" class="form-control">
-                                    <span class="input-group-text icon" id="id_icon"><i class="fa-regular fa-eye"></i></span>
-                                </div>
+                                <label for="nama_obat" class="form-label">Medicine Name</label>
+                                <input type="text" value="{{$pasien->nama_obat}}" readonly name="nama_obat" id="nama_obat" class="form-control" required>
                             </div>
                         </div>
                         <div class="row pt-5">
@@ -105,7 +101,7 @@
                                     <option value="3" {{$pasien->medication_times == '3' ? 'selected' : ''}}>3</option>
                                 </select>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding-bottom:50px">
                                 <label for="status" class="form-label">Status</label>
                                 <select name="status" id="status"  class="form-select" style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px; pointer-events: none; touch-action: none;">
                                     <option value="" {{$pasien->status == '' ? 'selected' : ''}}>Choose Here</option>
@@ -114,155 +110,246 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="row pt-5 pb-5">
-                            <div class="col-md-12 d-flex justify-content-center">
-                                <a href="/download-excel/{{ $pasien->id }}" class="btn btn-success btn-block">Download Excel</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="card border-0 shadow border-radius" style="margin-top: 30px;">
-                <div class="container">
-                    <h2 class="text-center pt-3">Upload Data Kepatuhan</h2>
-                    <form method="POST" action="{{ route('uploadCsv') }}" enctype="multipart/form-data">
-                        @csrf
-                        @method('POST')
-                        <div class="form-group">
-                            <label for="file" class="mx-1">Upload File Excel:</label>
-                            <input type="file" class="form-control mt-2 mb-4" id="file" name="file" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-5">Upload</button>
-                    </form>
-                
-                    @if(session('success'))
-                        <div class="alert alert-success mt-3">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                
-                    @if(session('error'))
-                        <div class="alert alert-danger mt-3">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-                
-                    @if(session('complianceData'))
-                        <div class="mt-5">
-                            <h2>Compliance Data</h2>
-                            <table class="table table-bordered">
+                            @php
+                               
+                                $data = $pasien->waktuMinum()->first();
+                            @endphp
+
+                            @if($data)
+                            <table width="100%" class="table table-bordered text-center" >
                                 <thead>
+                                     <tr>
+                                        <td colspan="4" style="font-size:20px;font-weight:bold;">Riwayat Minum Pasien</td>
+                                    </tr>
                                     <tr>
-                                        <th>Hari</th>
-                                        <th>Tanggal Minum</th>
-                                        <th>Persentase Kepatuhan</th>
+                                        <td>Hari</td>
+                                        <td>Jam 1</td>
+                                        <td>Jam 2</td>
+                                        <td>Jam 3</td>
+                                        
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @php
-                                        $totalDays = count(session('complianceData'));
-                                        $totalPercentage = 0;
-                                    @endphp
-                                    @foreach(session('complianceData') as $data)
-                                        @php
-                                            $totalPercentage += $data['Persentase Kepatuhan'];
-                                        @endphp
+                                <tbody class="text-center">
                                         <tr>
-                                            <td>{{ $data['Hari'] }}</td>
-                                            <td>{{ $data['Tanggal'] }}</td>
-                                            <td>{{ $data['Persentase Kepatuhan'] }}%</td>
+                                            <td>Hari 1</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum1 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum1 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum1 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum2 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum2 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum2 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum3 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum3 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum3 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
-                                    @endforeach
-                                    @php
-                                        $averageCompliance = $totalDays ? $totalPercentage / $totalDays : 0;
-                                        $complianceStatus = $averageCompliance >= 80 ? 'Patuh' : 'Tidak Patuh';
-                                    @endphp
+                                        
+                                        <tr>
+                                            <!-- hari 2 -->
+                                            <td>Hari 2</td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum4 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum4 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum4 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum5 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum5 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum5 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum6 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum6 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum6 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <!-- hari 3 -->
+                                            <td>Hari 3</td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum7 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum7 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum7 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum8 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum8 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum8 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum9 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum9 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum9 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <!-- hari 4 -->
+                                            <td>Hari 4</td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum10 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum10 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum10 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum11 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum11 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum11 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum12 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum12 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum12 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <!-- hari 5 -->
+                                            <td>Hari 5</td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum13 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum13 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum13 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum14 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum14 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum14 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum15 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum15 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum15 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <!-- hari 6 -->
+                                            <td>Hari 6</td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum16 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum16 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum16 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum17 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum17 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum17 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum18 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum18 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum18 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <!-- hari 7 -->
+                                            <td>Hari 7</td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum19 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum19 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum19 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum20 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum20 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum20 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row align-items-center">
+                                                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                                                        <img src="{{ $data->bukti_minum21 }}" alt="No Data" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                                        <p class="mb-0">{{ $data->sudah_minum21 ? 'Sudah' : 'Belum' }} minum pada {{ $data->waktu_minum21 }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
                                 </tbody>
                             </table>
-                            <div class="mt-3">
-                                <h4>Status Kepatuhan: {{ $complianceStatus }}</h4>
-                                <p>Total Hari: {{ $totalDays }}</p>
-                                <p>Rata-rata Persentase Kepatuhan: {{ number_format($averageCompliance, 2) }}%</p>
+                            @else
+                                <p>No data available.</p>
+                            @endif
+                        </tbody>
+                        </table>
+                        <div class="row pt-2 pb-5">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <a href="/download-json/{{ $pasien->id }}" class="btn btn-success btn-block">
+                                    Download JSON
+                                </a>
                             </div>
                         </div>
-                    @endif
-                </div>                                      
-                <!-- Modal -->
-                <div class="modal fade" id="kepatuhanModal" tabindex="-1" aria-labelledby="kepatuhanModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="kepatuhanModalLabel">Medication Adherence</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div id="medicationTimes"></div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-
-                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-                    integrity="sha384-oBqDVmMz4fnFO9gybBogGzU6legyJ8/Y7D2RzA7zmObpdtIfl5Wc5c5Exnb1Anwf" crossorigin="anonymous">
-                </script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-                    integrity="sha384-QF1FQeQRd+8ZtCp0BtxNBKhqIMrfSJpXU1p4OmJxKOxKhOg4kXvi7CFOBjcBQxaE" crossorigin="anonymous">
-                </script>
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-
-                <script>
-                    $(document).ready(function () {
-                        $('[data-bs-toggle="modal"]').on('click', function () {
-                            var pasienId = $(this).data('pasien-id');
-                            $.ajax({
-                                url: '/kepatuhan/' + pasienId,
-                                method: 'GET',
-                                success: function (response) {
-                                    if (response.error) {
-                                        $('#medicationTimes').html('<p>' + response.error + '</p>');
-                                    } else {
-                                        var medicationTimesHtml = '<ul>';
-                                        response.medicationTimes.forEach(function (time) {
-                                            medicationTimesHtml += '<li>' + time + '</li>';
-                                        });
-                                        medicationTimesHtml += '</ul>';
-                                        $('#medicationTimes').html(medicationTimesHtml);
-                                    }
-                                }
-                            });
-                        });
-                    });
-                </script>
-                <script>
-                    $(document).ready(function() {
-                        $('#uploadForm').on('submit', function(event) {
-                            event.preventDefault();
-                            var formData = new FormData(this);
-                            $.ajax({
-                                url: 'http://localhost:5000/api/compliance',
-                                type: 'POST',
-                                data: formData,
-                                contentType: false,
-                                processData: false,
-                                success: function(response) {
-                                    var resultHtml = '<ul>';
-                                    $.each(response, function(patient_id, compliance_percentage) {
-                                        resultHtml += '<li>Persentase kepatuhan pasien ' + patient_id + ': ' + compliance_percentage + '%</li>';
-                                    });
-                                    resultHtml += '</ul>';
-                                    $('#result').html(resultHtml);
-                                },
-                                error: function(response) {
-                                    $('#result').html('<p class="text-danger">Error: ' + response.responseJSON.error + '</p>');
-                                }
-                            });
-                        });
-                    });
-                </script>
             </div>
         </div>
     </div>

@@ -36,6 +36,9 @@ class pasienController extends Controller
         $pasien->status = $request->input('status');
         $pasien->time_to_take_medicine = $request->input('time_to_take_medicine');
         $pasien->medication_times = $request->input('medication_times');
+        // $pasien->mulai_minum = $request->input('mulai_minum');
+        // $pasien->akhir_minum = $request->input('akhir_minum');
+        $pasien->nama_obat = $request->input('nama_obat');
         $pasien->password = Hash::make($request->input('password'));
 
         if ($request->hasFile('photo')) {
@@ -102,6 +105,12 @@ class pasienController extends Controller
         return view('dokter.infoPasien', compact('pasien'));
     }
 
+    public function infoForPasien($id)
+    {
+        $pasien = Pasien::findOrFail($id);
+        return view('Pasien.pengingatPasien', compact('pasien'));
+    }
+
     public function update(Request $request, $id)
     {
         $pasien = Pasien::findOrFail($id);
@@ -117,6 +126,9 @@ class pasienController extends Controller
         $pasien->disease = $request->disease;
         $pasien->level = $request->level;
         $pasien->status = $request->status;
+        // $pasien->mulai_minum = $request->mulai_minum;
+        // $pasien->akhir_minum = $request->akhir_minum;
+        $pasien->nama_obat = $request->nama_obat;
         $pasien->time_to_take_medicine = $request->time_to_take_medicine;
         $pasien->medication_times = $request->medication_times;
 

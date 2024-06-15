@@ -32,7 +32,7 @@ Route::get('/regisAdmin', function () {
     return view('auth.regisAdmin');
 });
 
-Route::post('/upload-csv', [UploadController::class, 'uploadCsv'])->name('uploadCsv');
+Route::get('/download-json/{id}', [WaktuMinumController::class, 'downloadJson']);
 
 // Rute untuk menampilkan info pasien (yang sudah ada)
 Route::get('/info-pasien/{id}', [pasienController::class, 'info'])->name('infoPasien');
@@ -63,6 +63,9 @@ Route::get('/pasiens/{id}/tambahData1', [PasienController::class, 'viewedit1'])-
 Route::get('/pasiens/{id}/tambahData2', [PasienController::class, 'viewedit2'])->name('pasiens.edit2');
 Route::put('/pasiens/{id}/tambah1', [PasienController::class, 'tambah1'])->name('pasiens.tambah1');
 Route::put('/pasiens/{id}/tambah2', [PasienController::class, 'tambah2'])->name('pasiens.tambah2');
+Route::get('/pasiens/{id}/infoPasien', [pasienController::class, 'infoForPasien'])->name('pasiens.pengingat');
+
+Route::put('/waktu_minum/{id}', [WaktuMinumController::class, 'update'])->name('waktu_minum.update');
 // logout
 Route::get('/logout', [PasienController::class, 'logout'])->name('logout');
 

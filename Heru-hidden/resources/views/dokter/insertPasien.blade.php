@@ -26,6 +26,10 @@
                         </div>
                         <div class="row pt-5">
                             <div class="col-md-4">
+                                <label for="nama_obat" class="form-label">Medicine Name</label>
+                                <input type="text" name="nama_obat" id="nama_obat" class="form-control" required>
+                            </div>
+                            <div class="col-md-4">
                                 <label for="inputUmur" class="form-label">Age</label>
                                 <input type="text" name="age" id="inputUmur" class="form-control" required>
                             </div>
@@ -38,13 +42,12 @@
                                     <option value="other">other</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputPenyakit" class="form-label">Desease</label>
                                 <input type="text" name="disease" id="inputPenyakit" class="form-control" required>
                             </div>
-                        </div>
-
-                        <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputLamaMinumObat" class="form-label">Time to take medicine</label>
                                 <input type="text" name="time_to_take_medicine" id="inputLamaMinumObat" class="form-control" required>
@@ -58,6 +61,8 @@
                                     <option value="3">3</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputJabatan" class="form-label">Level</label>
                                 <select name="level" id="inputJabatan" class="form-select" required>
@@ -67,12 +72,15 @@
                                     <option value="High">High</option>
                                 </select>
                             </div>
-                        </div>
+                            <!-- <div class="col-md-4">
+                                <label for="mulai_minum">Tanggal Mulai:</label>
+                                <input type="date" id="mulai_minum" name="mulai_minum">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="akhir_minum">Tanggal Akhir:</label>
+                                <input type="date" id="akhir_minum" name="akhir_minum">
+                            </div> -->
                         <div class="row pt-5">
-                            {{-- <div class="col-md-4" id="timeInputs" style="display: none;">
-                                <label for="waktu">Pilih waktu:</label>
-                                <input type="time" id="waktu" name="waktu">
-                            </div> --}}
                             <div class="col-md-4">
                                 <label for="foto_profil" class="form-label">Foto Profil :</label>
                                 <input type="file" name="photo" id="foto_profil" class="form-control" required>
@@ -98,32 +106,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function showHideTimeInput() {
-            var selectedValue = parseInt(document.getElementById("inputObatSehari").value);
-            var timeInputsDiv = document.getElementById("timeInputs");
-
-            // Menghapus semua input waktu yang ada sebelum menambah yang baru
-            timeInputsDiv.innerHTML = "";
-
-            // Menambah input waktu sesuai dengan jumlah yang dipilih
-            for (var i = 0; i < selectedValue; i++) {
-                var inputTime = document.createElement("div");
-                inputTime.classList.add("col-md-4");
-                inputTime.innerHTML = `
-                    <label for="waktu${i+1}">Jam Minum ${i+1}:</label>
-                    <input type="time" id="waktu${i+1}" name="waktu${i+1}">
-                `;
-                timeInputsDiv.appendChild(inputTime);
-            }
-
-            // Menampilkan atau menyembunyikan div input waktu
-            if (selectedValue === 0) {
-                timeInputsDiv.style.display = "none";
-            } else {
-                timeInputsDiv.style.display = "block";
-            }
-        }
-    </script>
     @include('dokter.footerDokter')

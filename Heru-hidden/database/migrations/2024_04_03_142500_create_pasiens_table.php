@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('nama_obat');
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('age');
@@ -24,17 +25,6 @@ return new class extends Migration
             $table->integer('time_to_take_medicine');
             $table->string('medication_times');
             $table->string('photo')->nullable();
-
-            // // 
-            // $table->enum('sudah_minum1', ['Ya', 'Belum'])->nullable();
-            // $table->date('tanggal_minum1')->nullable();
-            // $table->time('waktu_minum1')->nullable();
-            // $table->string('bukti_minum1')->nullable();
-
-            // $table->enum('sudah_minum2', ['Ya', 'Belum'])->nullable();
-            // $table->date('tanggal_minum2')->nullable();
-            // $table->time('waktu_minum2')->nullable();
-            // $table->string('bukti_minum2')->nullable();
 
             $table->timestamps();
         });

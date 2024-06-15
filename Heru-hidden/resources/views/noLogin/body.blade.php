@@ -5,11 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Judul Halaman Anda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="css/styleNoLogin.css" rel="stylesheet">
+    <style>
+    #navbarTogglerDemo02{
+        height: 100%;
+        padding: 10px;
+    }
+    /* Navbar */
+    .navbar{
+        background-color: white;
+        height: 80px;
+    }
+    </style>
 </head>
 
 <body style="background-color: rgba(243, 249, 251, 1);">
@@ -21,8 +33,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02" style="background-color:rgba(248, 249, 250, 1)">
-                <ul class="navbar-nav ms-auto">
+            <div class="collapse navbar-collapse text-center justify-content-center" id="navbarTogglerDemo02" style="background-color:rgba(248, 249, 250, 1)">
+                <ul class="navbar-nav mx-auto flex-grow-3">
                     <li class="nav-item">
                         <a class="nav-link" id="home" href="#">Home</a>
                     </li>
@@ -36,22 +48,29 @@
                         <a class="nav-link" id="about" href="#tentang">About</a>
                     </li>
                 </ul>
+                <a class="login-button" href="/pilihRole">Login</a>
             </div>
         </div>
     </nav>
-    <div class="gambarTulisan" style="position: relative;z-index:1000; ">
-        <img src="images/Dokter10.png" class="img-fluid" alt="" style="width: 100%;" data-aos="fade-up">
-        <div class="p-5" style="position: absolute; top: 25%; width: 90%; height: 60%; left: 7%;"
-            data-aos="fade-up"data-aos-duration="3000">
-            <p style="font-size:30px;">Breathe Easy, Live Happily with..</p>
-            <p style="font-size:30px; font-weight:bold; color:rgba(17, 63, 103, 1)">RespiraCare</p>
-            <a class="login-button" href="/pilihRole">Login</a>
-            <button class="navbar-toggler pe-0 p-4" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+
+
+    <div class="container-fluid landing align-items">
+        <div class="row mx-5">
+            <div class="col-md" style="padding-top:230px;" data-aos="fade-up"data-aos-duration="3000">
+                    <p style="font-size: 30px; font-weight: bold; color: rgba(17, 63, 103, 1);">Your Solution for Managing Respiratory Medication</p>
+                <div>
+                    <p style="font-size: 12px;">We are here to provide you with the best solution for managing your respiratory medication. With high-quality products and reliable services, we are ready to help you manage your respiratory medication more easily and effectively every day.
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <img src="{{ asset('images/Dokter10.png') }}" class="img-fluid position-absolute w-100 h-100" style="object-fit: cover; z-index: -1;" alt="Doctor Image">
+            </div>
         </div>
     </div>
+
 
     <div id="roles" class="container-fluid" style="padding-bottom:100px">
         <div class="row text-center justify-content-center" style="padding-top:100px;padding-bottom:50px"
@@ -61,71 +80,70 @@
                 Role
             </div>
             <p>Peran merupakan elemen penting dalam organisasi kami, yang mencakup berbagai tanggung jawab dan
-                harapan.</p>
-            <p>Ini dirancang untuk memanfaatkan kekuatan individu, mendorong pertumbuhan profesional, dan
+                harapan. <br>Ini dirancang untuk memanfaatkan kekuatan individu, mendorong pertumbuhan profesional, dan
                 berkontribusi pada kesuksesan tim secara keseluruhan.</p>
         </div>
-        <div class="row justify-content-center" data-aos="fade-down" data-aos-duration="500" >
-            <!-- card 1 -->
-            <div class="col mb-4">
-                <div class="card shadow h-500">
-                    <div class="card-body d-flex flex-column justify-content-center text-center">
-                        <div class="mx-auto mb-3">
-                            <img src="images/heru.jpg" alt="Heru Ikhsan Maulana" class="img-fluid rounded-circle">
-                            <h5 class="card-title">Heru Ikhsan Maulana</h5>
-                            <p>Heru Ikhsan Maulana adalah Scrum Master, memastikan bahwa tim mengikuti prinsip-prinsip
-                                tangkas dan
-                                praktik. Dia memfasilitasi pertemuan, menghilangkan hambatan, dan membantu tim untuk
-                                meningkatkannya
-                                proses dan produktivitas.</p>
+        <div class="container pt-3 ms-md-auto text-center" data-aos="fade-down" data-aos-duration="500" >
+             <div class="row">
+                <div class="col mb-3">
+                    <div class="card shadow h-200">
+                        <div class="card-body d-flex flex-column justify-content-center text-center">
+                            <div class="mx-auto mb-3">
+                                <img src="images/heru.jpg" alt="Heru Ikhsan Maulana" class="img-fluid rounded-circle">
+                                <h5 class="card-title">Heru Ikhsan Maulana</h5>
+                                <p>Heru Ikhsan Maulana adalah Scrum Master, memastikan bahwa tim mengikuti prinsip-prinsip
+                                    tangkas dan
+                                    praktik. Dia memfasilitasi pertemuan, menghilangkan hambatan, dan membantu tim untuk
+                                    meningkatkannya
+                                    proses dan produktivitas.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- card 2 -->
-            <div class="col mb-4">
-                <div class="card shadow h-500">
-                    <div class="card-body d-flex flex-column justify-content-center text-center">
-                        <div class=" mx-auto mb-3">
-                            <img src="images/risky.png" alt="Muhammad Risky Farhan" class="img-fluid rounded-circle">
+                <div class="col mb-3">
+                    <div class="card shadow h-200">
+                        <div class="card-body d-flex flex-column justify-content-center text-center">
+                            <div class="mx-auto mb-3">
+                            <img src="images/risky.png" alt="Muhammad Risky Farhan" class="img-fluid rounded-circle">                                
+                            <h5 class="card-title">Muhammad Risky Farhan</h5>
+                                <p>Muhammad Risky Farhan adalah Front End Developer, bertanggung jawab untuk merancang dan
+                                melaksanakan
+                                antarmuka pengguna. Ia memastikan aplikasinya ramah pengguna, responsif, dan
+                                menarik secara visual.</p>
+                            </div>
                         </div>
-                        <h5 class="card-title">Muhammad Risky Farhan</h5>
-                        <p>Muhammad Risky Farhan adalah Front End Developer, bertanggung jawab untuk merancang dan
-                            melaksanakan
-                            antarmuka pengguna. Ia memastikan aplikasinya ramah pengguna, responsif, dan
-                            menarik secara visual.</p>
                     </div>
                 </div>
-            </div>
-            <!-- card 3 -->
-            <div class="col mb-4">
-                <div class="card shadow h-500">
-                    <div class="card-body d-flex flex-column justify-content-center text-center">
-                        <div class=" mx-auto mb-3">
-                            <img src="images/bimo.png" alt="Bimo Zachriansyah Wicaksono" class="img-fluid rounded-circle">
+                <div class="col mb-3">
+                    <div class="card shadow h-200">
+                        <div class="card-body d-flex flex-column justify-content-center text-center">
+                            <div class=" mx-auto mb-3">
+                                <img src="images/bimo.png" alt="Bimo Zachriansyah Wicaksono" class="img-fluid rounded-circle">
+                            </div>
+                            <h5 class="card-title">Bimo Zachriansyah Wicaksono</h5>
+                            <p>Bimo Zachriansyah Wicaksono adalah AI Developer, berfokus pada mengintegrasikan buatan
+                                intelijen ke dalam proyek tersebut. Dia mengembangkan dan mengimplementasikan model
+                                pembelajaran mesin untuk menyempurnakannya
+                                fungsionalitas dan kecerdasan aplikasi.
+                            </p>
                         </div>
-                        <h5 class="card-title">Bimo Zachriansyah Wicaksono</h5>
-                        <p>Bimo Zachriansyah Wicaksono adalah AI Developer, berfokus pada mengintegrasikan buatan
-                            intelijen ke dalam proyek tersebut. Dia mengembangkan dan mengimplementasikan model
-                            pembelajaran mesin untuk menyempurnakannya
-                            fungsionalitas dan kecerdasan aplikasi.</p>
                     </div>
                 </div>
-            </div>
-            <!-- card 4 -->
-            <div class="col-auto mt-4">
-                <div class="card shadow h-500">
-                    <div class="card-body d-flex flex-column justify-content-center text-center">
-                        <div class=" mx-auto mb-3">
-                            <img src="images/david.jpg" alt="David Gholi Rahmadana" class="img-fluid rounded-circle">
+                <div class="col mb-3">
+                    <div class="card shadow h-200">
+                        <div class="card-body d-flex flex-column justify-content-center text-center">
+                            <div class=" mx-auto mb-3">
+                                <img src="images/david.jpg" alt="David Gholi Rahmadana" class="img-fluid rounded-circle">
+                            </div>
+                            <h5 class="card-title">David Gholi Rahmadana</h5>
+                            <p>David Gholi Rahmadana adalah Backend Developer, bertanggung jawab atas logika sisi server dan
+                                manajemen basis data. Dia memastikan bahwa backend aplikasi kuat, aman, dan
+                                efisien menangani pemrosesan dan penyimpanan data.
+                            </p>
                         </div>
-                        <h5 class="card-title">David Gholi Rahmadana</h5>
-                        <p>David Gholi Rahmadana adalah Backend Developer, bertanggung jawab atas logika sisi server dan
-                            manajemen basis data. Dia memastikan bahwa backend aplikasi kuat, aman, dan
-                            efisien menangani pemrosesan dan penyimpanan data.</p>
                     </div>
                 </div>
-            </div>
+             </div>
         </div>
     </div>
 
