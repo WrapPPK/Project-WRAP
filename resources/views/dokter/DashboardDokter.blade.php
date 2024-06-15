@@ -9,30 +9,13 @@
                     @endif
                 </div>
             </dir>
-            {{-- <div class="row justify-content-bettwen">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center p-3">
-                            <h5 class="card-title">Condition Patient Data</h5>
-                            <canvas id="donutChart1"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center p-3">
-                            <h5 class="card-title">Active Patient Data</h5>
-                            <canvas id="donutChart2"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
+            
             <div class="row justify-content-bettwen">
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body text-center p-3">
                             <h5 class="card-title">Condition Patient Data</h5>
-                            <canvas id="donutChart1"></canvas>
+                            <canvas id="kondisiChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -40,7 +23,7 @@
                     <div class="card">
                         <div class="card-body text-center p-3">
                             <h5 class="card-title">Active Patient Data</h5>
-                            <canvas id="donutChart2"></canvas>
+                            <canvas id="statusChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -130,89 +113,66 @@
     </script>
 
     <script>
-    // Data untuk chart 1
-        var data1 = {
-            labels: ['Low', 'Medium', 'High'],
-            datasets: [{
-                data: [0, 2, 1],
-                backgroundColor: [
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(255, 99, 132, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(255, 99, 132, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-        // Data untuk chart 2
-        var data2 = {
-            labels: ['Done', 'Active'],
-            datasets: [{
-                data: [1, 2],
-                backgroundColor: [
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(54, 162, 235, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(54, 162, 235, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-        // Data untuk chart 3
-        var data3 = {
-            labels: ['Black', 'White', 'Gray'],
-            datasets: [{
-                data: [5, 10, 15],
-                backgroundColor: [
-                    'rgba(0, 0, 0, 0.2)',
-                    'rgba(255, 255, 255, 0.2)',
-                    'rgba(128, 128, 128, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(0, 0, 0, 1)',
-                    'rgba(255, 255, 255, 1)',
-                    'rgba(128, 128, 128, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-        // Membuat chart 1
-        var ctx1 = document.getElementById('donutChart1').getContext('2d');
-        var myChart1 = new Chart(ctx1, {
+        // Donut Chart untuk Active Patient Data
+        var ctx2 = document.getElementById('statusChart').getContext('2d');
+        var statusChart = new Chart(ctx2, {
             type: 'doughnut',
-            data: data1,
+            data: {
+                labels: <?php echo json_encode($statusLabels); ?>,
+                datasets: [{
+                    label: 'Patient Status',
+                    data: <?php echo json_encode($statusData); ?>,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
             options: {
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'bottom'
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
             }
         });
 
-        // Membuat chart 2
-        var ctx2 = document.getElementById('donutChart2').getContext('2d');
-        var myChart2 = new Chart(ctx2, {
+        
+         // Donut Chart untuk Condition Patient Data
+        var ctx1 = document.getElementById('kondisiChart').getContext('2d');
+        var kondisiChart = new Chart(ctx1, {
             type: 'doughnut',
-            data: data2,
+            data: {
+                labels: <?php echo json_encode($kondisiLabels); ?>,
+                datasets: [{
+                    label: 'Patient Condition',
+                    data: <?php echo json_encode($kondisiData); ?>,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)', // warna untuk 'low'
+                        'rgba(255, 206, 86, 0.2)', // warna untuk 'medium'
+                        'rgba(255, 99, 132, 0.2)'  // warna untuk 'high'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)', // warna border untuk 'low'
+                        'rgba(255, 206, 86, 1)', // warna border untuk 'medium'
+                        'rgba(255, 99, 132, 1)'  // warna border untuk 'high'
+                    ],
+                    borderWidth: 1
+                }]
+            },
             options: {
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'bottom'
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
             }
         });
+
     </script>
     @include('dokter.footerDokter')

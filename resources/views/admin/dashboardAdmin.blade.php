@@ -1,13 +1,20 @@
 @include('admin.headerAdmin')
     @include('admin.sidebarAdmin')
-    <div class="container" style="width: 80%; margin-top:90px;">
+    <div class="container" style="width: 100%; margin-top:90px;">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h1 class="mb-3">Doctor Account</h1>
-            <button class="button mb-2" onclick="location.href='/insert'"><i class="fas fa-user-plus" style="margin:2px; margin-right:10px;"></i>Tambah</button>
+            <h1 class="mb-3">Doctor List</h1>
         </div>
         <div class="inner-container" style="margin-bottom:100px;">
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
-            <thead>
+            <dir class="board">
+                <div class="textheadertable" style="margin-bottom:20px;">
+                    <div id="test" style="display: flex; justify-content: flex-end; margin-top: 10px;">
+                        <input style="margin-right:890px" type="text" id="searchInput" placeholder="Search for names.." onkeyup="searchTable()">
+                        <button style="padding-right:20px" type="button" class="btn btn-primary" onclick="location.href='/insert'">+ Tambah</button>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <table class="table" width="100%">
+                <thead>
                 <tr>
                     <th>No</th>
                     <th>NIP</th>
@@ -40,7 +47,7 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table>
+            </dir>
         </div>
     </div>
     @include('admin.footerAdmin')

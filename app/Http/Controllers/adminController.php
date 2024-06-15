@@ -57,7 +57,7 @@ class adminController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+     {
         $admin = new admin();
         $admin->nip = $request->input('inputNip');
         $admin->nama = $request->input('nama_lengkap');
@@ -68,6 +68,7 @@ class adminController extends Controller
 
         return redirect()->route('loginAdmin')->with('success', 'Admin account created successfully!');
     }
+    
     public function dashboardAdminView()
     {
         $data = doctor::all();
@@ -103,12 +104,11 @@ class adminController extends Controller
         $doctor->nip = $request->NIP;
         $doctor->name = $request->Name;
         $doctor->email = $request->Email;
-        $doctor->password = Hash::make($request->Password);
         if ($request->hasFile('uploadFoto')) {
             $file = $request->file('uploadFoto');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads'), $fileName);
-            $doctor->uploadFoto = 'uploads/' . $fileName;
+            $file->move(public_path('uploads/doctors/'), $fileName);
+            $doctor->photo = 'uploads/doctors/' . $fileName;
         }
 
         // UPDATE

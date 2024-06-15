@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Data Pasien</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -26,6 +27,11 @@
 
     <!-- Chart garis -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js"></script>
+    <style>
+        body{
+            font-family: "Outfit", sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -48,7 +54,7 @@
     <div class="container-fluid" style="margin-top: 100px; margin-bottom: 150px">
         <div class="container mx-auto">
             <div class="card border-0 shadow border-radius">
-                <h2 class="text-center pt-5">Masukkan Data Pasien</h2>
+                <h2 class="text-center pt-5">Edit Data Pasien</h2>
                 <div class="card-body">
                     <form action="{{ route('pasiens.update', ['id' => $pasien->id]) }}" method="POST"
                         class="form-valid" enctype="multipart/form-data">
@@ -69,13 +75,8 @@
                                 <input value="{{$pasien->email}}" type="email" name="email" id="inputemail" class="form-control" required>
                             </div>
                             <div class="col-md-4">
-                                <label for="inputpassword" class="form-label">Password</label>
-                                <div class="input-group">
-                                    <input value="" type="password" name="password" id="inputpassword" class="form-control"
-                                        >
-                                    <span class="input-group-text icon" id="id_icon"><i
-                                            class="fa-regular fa-eye"></i></span>
-                                </div>
+                                <label for="nama_obat" class="form-label">Medicine Name</label>
+                                <input type="text" value="{{$pasien->nama_obat}}" name="nama_obat" id="nama_obat" class="form-control" required>
                             </div>
                         </div>
                         <div class="row pt-5">
@@ -124,6 +125,8 @@
                                     <option value="Done" {{$pasien->status == 'Done' ? 'selected' : ''}}>Done</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputObatSehari" class="form-label">Level</label>
                                 <select name="level" id="inputObatSehari" class="form-control"
@@ -135,12 +138,16 @@
                                     <option value="High" {{$pasien->level == 'High' ? 'selected' : ''}}>High</option>
                                 </select>
                             </div>
+                            <div class="col-md-4">
+                                <label for="mulai_minum">Tanggal Mulai:</label>
+                                <input type="date" value="{{$pasien->mulai_minum}}" id="mulai_minum" name="mulai_minum">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="akhir_minum">Tanggal Akhir:</label>
+                                <input type="date" value="{{$pasien->akhir_minum}}" id="akhir_minum" name="akhir_minum">
+                            </div>
                         </div>
                         <div class="row pt-5">
-                            {{-- <div class="col-md-4" id="timeInputs" style="display: none;">
-                                <label for="waktu">Pilih waktu:</label>
-                                <input type="time" id="waktu" name="waktu">
-                            </div> --}}
                             <div class="col-md-4">
                                 <label for="foto_profil" class="form-label">Foto Profil :</label>
                                 <input value="{{$pasien->photo}}" type="file" name="photo" id="foto_profil" class="form-control" >

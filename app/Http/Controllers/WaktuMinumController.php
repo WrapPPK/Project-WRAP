@@ -12,19 +12,8 @@ class WaktuMinumController extends Controller{
 
     public function store(Request $request)
     {
-        // Validasi data yang diterima dari formulir
-        $validatedData = $request->validate([
-            'hari' => 'required',
-            'sudah_minum' => 'required|in:1,0',
-            'tanggal_minum' => 'required|date',
-            'waktu_minum' => 'required|date_format:H:i',
-        ]);
-
         // Mendapatkan ID pengguna yang sedang login
         $id = Auth::guard('pasien')->user()->id;
-
-        // memasukkan data
-        $path = '';
         $obat = new WaktuMinum();
         $obat->id = $id;
         $obat->hari= $request->input('hari');
@@ -33,9 +22,11 @@ class WaktuMinumController extends Controller{
         $obat->waktu_minum = $request->input('waktu_minum');
         if ($request->hasFile('bukti_minum')) {
             $file = $request->file('bukti_minum');
-            $path = $file->store('uploads/BuktiObat', 'public'); // Simpan file ke direktori storage/app/uploads/pasiens
+            $filename = time() . '' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/BuktiObat'), $filename);
+            $obat->bukti_minum = 'uploads/BuktiObat/' . $filename;
         }
-        $obat->bukti_minum = $path;
+        
         $obat->save();
 
         // Redirect ke halaman atau tindakan yang sesuai setelah penyimpanan berhasil

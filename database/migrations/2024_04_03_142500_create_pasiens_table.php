@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('nama_obat');
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('age');
@@ -23,6 +24,8 @@ return new class extends Migration
             $table->string('disease');
             $table->integer('time_to_take_medicine');
             $table->string('medication_times');
+            $table->date('mulai_minum')->nullable();
+            $table->date('akhir_minum')->nullable();
             $table->string('photo')->nullable();
 
             // // 

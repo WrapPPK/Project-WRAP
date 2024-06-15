@@ -1,11 +1,16 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\WaktuMinumController;
-
+use App\Http\Controllers\KepatuhanController;
+use App\Http\Controllers\UploadController;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Password;
 
 Route::get('/', function () {
     // return view('auth.regisPasien');
@@ -20,8 +25,23 @@ Route::get('/', function () {
     // return view('auth.regisAdmin');
     // return view('auth.pilihRole');
     // return view('dokter.infoPasien');
-
+ 
 });
+
+Route::get('/regisAdmin', function () {
+    return view('auth.regisAdmin');
+});
+
+Route::post('/upload-csv', [UploadController::class, 'uploadCsv'])->name('uploadCsv');
+
+// Rute untuk menampilkan info pasien (yang sudah ada)
+Route::get('/info-pasien/{id}', [pasienController::class, 'info'])->name('infoPasien');
+// Rute baru untuk menampilkan halaman kepatuhan pasien
+Route::get('/kepatuhan/{id}', [KepatuhanController::class, 'show'])->name('showKepatuhan');
+
+// web.php
+Route::get('/kepatuhan/{id}', [KepatuhanController::class, 'show']);
+Route::get('/download-excel/{id}', [KepatuhanController::class, 'downloadExcel'])->name('downloadExcel');
 
 
 
@@ -43,6 +63,7 @@ Route::get('/pasiens/{id}/tambahData1', [PasienController::class, 'viewedit1'])-
 Route::get('/pasiens/{id}/tambahData2', [PasienController::class, 'viewedit2'])->name('pasiens.edit2');
 Route::put('/pasiens/{id}/tambah1', [PasienController::class, 'tambah1'])->name('pasiens.tambah1');
 Route::put('/pasiens/{id}/tambah2', [PasienController::class, 'tambah2'])->name('pasiens.tambah2');
+Route::get('/pasiens/{id}/infoPasien', [pasienController::class, 'infoForPasien'])->name('pasiens.pengingat');
 // logout
 Route::get('/logout', [PasienController::class, 'logout'])->name('logout');
 
@@ -81,6 +102,20 @@ Route::put('/doctor/{id}/edit', [adminController::class, 'update'])->name('docto
 // logout admin
 Route::get('/logout', [adminController::class, 'logout'])->name('logout');
 
+
+// forgot pass
+
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+ 
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+ 
+    return $status === Password::RESET_LINK_SENT
+                ? back()->with(['status' => __($status)])
+                : back()->withErrors(['email' => __($status)]);
+})->middleware('guest')->name('password.email');
 
 
 

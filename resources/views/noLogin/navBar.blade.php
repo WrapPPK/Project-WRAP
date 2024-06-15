@@ -17,27 +17,29 @@
                 <div class="offcanvas offcanvas-end" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
                     </div>
                     <div class="offcanvas">
                         <ul class="navbar-nav justify-content-center">
                             <li class="nav-item">
-                                <a class="nav-link active mx-lg-2" aria-current="page" href="#">Home</a>
+                                <a class="nav-link mx-lg-2" id="home" href="#">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="/#about">About</a>
+                                <a class="nav-link mx-lg-2" id="role" href="/#roles">Role</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="/#contact">Contact</a>
+                                <a class="nav-link mx-lg-2" id="feature" href="/#fitur">Feature</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-lg-2" href="/#fitur">Feature</a>
+                                <a class="nav-link mx-lg-2" id="about" href="/#tentang">About</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <a class="login-button" href="/pilihRole">Login</a>
-                <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -54,4 +56,3 @@
 
 
 </body>
-

@@ -1,17 +1,111 @@
+body {
+    font-family: "Outfit", sans-serif;
+    background-color: rgba(243, 249, 251, 1);
+    color: #333;
+}
+
+
+
+.login-button {
+    background-color: transparent;
+    border: 2px solid rgba(17, 63, 103, 1); 
+    color: rgba(17, 63, 103, 1); 
+    font-size: 15px;
+    padding: 8px 80px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s; 
+    cursor: pointer;
+}
+
+.login-button:hover{
+    background-color: rgba(17, 63, 103, 1);
+    color: white;
+    border: 2px solid rgba(17, 63, 103, 1); 
+
+}
+
+
+.nav-link{
+    color: rgba(17, 63, 103, 1);
+    font-weight: 600;
+    position: relative;
+    font-size: 20px;
+}
+
+.nav-link:hover, .nav-link.active{
+    color: #000;
+    font-weight: 600;
+}
+
+.nav-link::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 2px;
+    background-color: rgba(17, 63, 103, 1);
+    visibility: hidden;
+}
+
+.nav-link:hover::before, .nav-link.active::before{
+    width: 100%;
+    color: rgba(17, 63, 103, 1);
+    visibility: visible;
+}
+
+.navbar-brand{
+    font-weight: 500;
+    color: rgb(38, 175, 196);
+    font-size: 24px;
+    transition: 0.3s color;
+}
+
+
+/* landing foto */
+.landing {
+    height: 550px;
+    position: relative;
+    overflow: hidden;
+}
+
+.content {
+    background: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent background for better text readability */
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    z-index: 1; /* Ensure content is above the image */
+}
+
+.img-fluid.position-absolute {
+    top: 0;
+    left: 0;
+}
+
+
+
+
+
+
 /* Why choose us */
 .card {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
 }
 
 .card-body {
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
 .card-title {
     position: absolute;
-    bottom: 50%;
+    bottom: 30%;
     left: 0;
     width: 100%;
     text-align: center;
@@ -24,18 +118,34 @@
     left: 0;
     width: 100%;
     text-align: justify;
-    padding-left: 30px;
-    padding-right: 30px;
-    transition: Top 0.3s ease;
+    padding: 20px;
+    font-size: 12px;
+    transition: top 0.3s ease;
+}
+
+.card-body img {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    bottom: 50%;
+    left:40%;
+    transition: bottom 0.3s ease;
 }
 
 .card-body:hover .card-title {
-    bottom: 70%;
+    bottom: 55%;
 }
 
 .card-body:hover p {
-    top: 35%;
+    top: 40%;
 }
+
+.card-body:hover img {
+    bottom: 70%;
+}
+
+
+
 
 /* our feature */
 

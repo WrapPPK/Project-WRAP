@@ -14,7 +14,7 @@ class Pasien extends Model implements AuthenticatableContract
 
     protected $table = 'pasiens';
     protected $fillable = [
-        'id','name', 'email', 'password', 'age', 'gender', 'disease','level', 'status', 'time_to_take_medicine', 'medication_times', 'photo'
+        'nama_obat','id','name', 'email', 'password', 'age', 'gender', 'disease','level', 'status', 'time_to_take_medicine', 'medication_times','mulai_minum', 'akhir_minum', 'photo'
     ];
 
     use HasFactory;

@@ -28,15 +28,14 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/admin">Transport Berkah Armada</a>
+            <a class="navbar-brand me-auto" href="{{ route('logout') }}">
+                <img src="images/RespiraCareLogo.png" alt="RespiraCare Logo" style="height: 50px; width: 50px;">respiraCare
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
-            <form action="/logout" method="POST">
-              @csrf
-              <button type="submit" class="btn btn-success border border-white" style="background-color: #c90000">Kembali</button>
-            </form>
+            <a href="{{ route('logout') }}" type="button" class="btn btn-primary">Kembali</a>
         </div>
     </nav>
     <div class="container-fluid" style="margin-top: 100px; margin-bottom: 150px">
@@ -72,7 +71,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="d-grid gap-2">
-                                    <button type="submit" class="btn btn-md text-light" onclick="#" style="background-color: #47a992">Submit</button>
+                                    <button type="submit" class="btn btn-md text-light" onclick="#" style="background-color: rgba(88, 95, 233, 1)">Submit</button>
                                 </div>
                             </div>
                         </div>

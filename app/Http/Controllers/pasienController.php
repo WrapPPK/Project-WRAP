@@ -36,6 +36,9 @@ class pasienController extends Controller
         $pasien->status = $request->input('status');
         $pasien->time_to_take_medicine = $request->input('time_to_take_medicine');
         $pasien->medication_times = $request->input('medication_times');
+        $pasien->mulai_minum = $request->input('mulai_minum');
+        $pasien->akhir_minum = $request->input('akhir_minum');
+        $pasien->nama_obat = $request->input('nama_obat');
         $pasien->password = Hash::make($request->input('password'));
 
         if ($request->hasFile('photo')) {
@@ -80,6 +83,7 @@ class pasienController extends Controller
             'title' => 'Dashboard'
         ]);
     }
+
     public function destroy($id)
     {
         $pasien = Pasien::findOrFail($id);
@@ -101,39 +105,52 @@ class pasienController extends Controller
         return view('dokter.infoPasien', compact('pasien'));
     }
 
+    public function infoForPasien($id)
+    {
+        $pasien = Pasien::findOrFail($id);
+        return view('Pasien.pengingatPasien', compact('pasien'));
+    }
+
     public function update(Request $request, $id)
     {
         $pasien = Pasien::findOrFail($id);
-
-        if ($request->hasFile('photo')) {
-            $photo = $request->file('photo')->store('photos', 'public');
-            $pasien->photo = $photo;
-        }
 
         if ($request->password) {
             $pasien->password = Hash::make($request->password);
         }
 
-        $pasien->name = $request->name;
-        $pasien->email = $request->email;
-        $pasien->age = $request->age;
-        $pasien->gender = $request->gender;
-        $pasien->disease = $request->disease;
-        $pasien->level = $request->level;
-        $pasien->status = $request->status;
-        $pasien->time_to_take_medicine = $request->time_to_take_medicine;
-        $pasien->medication_times = $request->medication_times;
+        $pasien->name = $request->name ?? $pasien->name;
+        $pasien->email = $request->email ?? $pasien->email;
+        $pasien->age = $request->age ?? $pasien->age;
+        $pasien->gender = $request->gender ?? $pasien->gender;
+        $pasien->disease = $request->disease ?? $pasien->disease;
+        $pasien->level = $request->level ?? $pasien->level;
+        $pasien->status = $request->status ?? $pasien->status;
+        $pasien->mulai_minum = $request->mulai_minum ?? $pasien->mulai_minum;
+        $pasien->akhir_minum = $request->akhir_minum ?? $pasien->akhir_minum;
+        $pasien->nama_obat = $request->nama_obat ?? $pasien->nama_obat;
+        $pasien->time_to_take_medicine = $request->time_to_take_medicine ?? $pasien->time_to_take_medicine;
+        $pasien->medication_times = $request->medication_times ?? $pasien->medication_times;
+
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/pasiens/'), $fileName);
+            $pasien->photo = 'uploads/pasiens/' . $fileName;
+        }
 
         $pasien->save();
 
         // return redirect()->route('/dashDokter')->with('success', 'Pasien berhasil dihapus');
-        return redirect()->back()->with('success', 'Doctor account created successfully!');
+        return redirect()->route('dashboardDoctor')->with('success', 'Doctor account created successfully!');
     }
-
+    
     // profile pasien
     public function showProfile()
     {
         $pasien = Auth::guard('pasien')->user();
         return view('Pasien.profilePasien', compact('pasien'));
     }
+
+    
 }

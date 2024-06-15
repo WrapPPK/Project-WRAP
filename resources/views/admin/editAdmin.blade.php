@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Admin Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -22,8 +23,10 @@
     <!-- Datables -->
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-
     <style>
+    body{
+        font-family: "Outfit", sans-serif;
+    }
     /* Sidebar */
     #sidebar {
         background-color: white;
@@ -187,7 +190,7 @@
                     <ul class="nav flex-column mt-5">
                         <center>
                             <a class="navbar-brand me-auto" href="{{ route('dashboardAdmin') }}">
-                                <img src="images/RespiraCareLogo.png" alt="RespiraCare Logo" style="height: 150px; width: 150px;">
+                                <img src={{ url("images/RespiraCareLogo.png") }} alt="RespiraCare Logo" style="height: 180px; width: 180px;">
                             </a>
                         </center>
                         {{-- <h3 class="text-center mt-3">Admin</h3> --}}
@@ -209,20 +212,24 @@
         <h2 class="AkunHead fw-semibold mt-5 " style="text-align:center; margin-bottom:40px;;">
             Edit Doctor Account
         </h2>
-        <div class="input-group mb-4 mx-auto" style="max-width: 568px">
+        <div class="input-group mb-1 mx-auto" style="max-width: 568px">NIP</div>
+        <div class="input-group mb-2 mx-auto" style="max-width: 568px">
             <input type="text" class="form-control" placeholder="NIP" aria-label="NIP" value="{{ $data->nip }}" name="NIP" aria-describedby="basic-addon1" />
         </div>
-        <div class="input-group mb-4 mx-auto" style="max-width: 568px">
+        <div class="input-group mb-1 mx-auto" style="max-width: 568px">Nama</div>
+        <div class="input-group mb-2 mx-auto" style="max-width: 568px">
             <input type="text" class="form-control" placeholder="Name" aria-label="Name" value="{{ $data->name }}" name="Name" aria-describedby="basic-addon1" />
         </div>
-        <div class="input-group mb-4 mx-auto" style="max-width: 568px">
+        <div class="input-group mb-1 mx-auto" style="max-width: 568px">Email</div>
+        <div class="input-group mb-2 mx-auto" style="max-width: 568px">
             <input type="text" class="form-control" placeholder="Email" aria-label="Email" name="Email" value="{{ $data->email }}" aria-describedby="basic-addon1" readonly/>
         </div>
-        <div class="input-group mb-4 mx-auto" style="max-width: 568px">
+        {{-- <div class="input-group mb-1 mx-auto" style="max-width: 568px">Password</div>
+        <div class="input-group mb-2 mx-auto" style="max-width: 568px">
             <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="Password" value="{{ $data->password }}"  aria-describedby="basic-addon1" readonly/>
-        </div>
+        </div> --}}
 
-        <div class="input-group mb-4 mx-auto" style="max-width: 568px">Upload photo</div>
+        <div class="input-group mb-2 mx-auto" style="max-width: 568px">Upload photo</div>
         <div class="input-group mb-4 mx-auto" style="max-width: 568px">
             <input type="file" name="uploadFoto"  size="20" />
         </div>

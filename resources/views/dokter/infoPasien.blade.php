@@ -5,31 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Info Pasien</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
-    <!-- Boostrap -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Icon cdn -->
+    <!-- Icon CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
-    <!-- css -->
+    <!-- CSS -->
     <link href="css/bodyStyle.css" rel="stylesheet">
 
-    <!-- Chart Donut-->
+    <!-- Chart Donut -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
 
-    <!-- Chart garis -->
+    <!-- Chart Garis -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js"></script>
+    <style>
+        body{
+            font-family: "Outfit", sans-serif;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-lg">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/dashboardDoctor">RespiraCare</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -40,49 +46,40 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
             <form action="/logout" method="POST">
                 @csrf
-                {{-- <button type="submit" class="btn btn-success border border-white"
-                    style="background-color: #c90000">Kembali</button> --}}
             </form>
         </div>
     </nav>
-    <div class="container-fluid" style="margin-top: 50px; margin-bottom: 150px">
+    <div class="container-fluid" style="margin-top: 100px; margin-bottom: 150px">
         <div class="container mx-auto">
             <div class="card border-0 shadow border-radius">
                 <h2 class="text-center pt-5">Info Data Pasien</h2>
                 <div class="card-body">
                     <form action="#" method="POST" class="form-valid" enctype="multipart/form-data">
-                        {{-- @csrf
-                        @method('PUT') --}}
-                        {{-- @php
-                            $data = App\Models\Pasien::findOrFail($id);
-                        @endphp --}}
+                        @csrf
+                        @method('GET')
                         <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputnamaLengkap" class="form-label">Name</label>
-                                <!-- {{-- <input type="text" name="id_admin" id="id_admin" class="form-control" hidden> --}} -->
                                 <input value="{{$pasien->name}}" type="text" name="name" id="inputnamaLengkap"
-                                    class="form-control" required>
+                                    class="form-control" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label for="inputemail" class="form-label">Email</label>
-                                <input value="{{$pasien->email}}" type="email" name="email" id="inputemail" class="form-control" required>
+                                <input value="{{$pasien->email}}" readonly type="email" name="email" id="inputemail" class="form-control" required>
                             </div>
                             <div class="col-md-4">
-                                <label for="inputpassword" class="form-label">Password</label>
-                                <div class="input-group">
-                                    <input value="" type="password" name="password" id="inputpassword" class="form-control">
-                                    <span class="input-group-text icon" id="id_icon"><i class="fa-regular fa-eye"></i></span>
-                                </div>
+                                <label for="nama_obat" class="form-label">Medicine Name</label>
+                                <input type="text" value="{{$pasien->nama_obat}}" readonly name="nama_obat" id="nama_obat" class="form-control" required>
                             </div>
                         </div>
                         <div class="row pt-5">
                             <div class="col-md-4">
-                                <label for="inputUmur" class="form-label">Age</label>
-                                <input value="{{$pasien->age}}" type="text" name="age" id="inputUmur" class="form-control" required>
+                                <label for="inputUmur"  class="form-label">Age</label>
+                                <input value="{{$pasien->age}}" readonly type="text" name="age" id="inputUmur" class="form-control" required>
                             </div>
                             <div class="col-md-4">
-                                <label for="gender" class="form-label">Gender</label>
-                                <select name="gender" id="gender" class="form-select" required>
+                                <label for="gender"  class="form-label">Gender</label>
+                                <select name="gender" id="gender" class="form-select" style="pointer-events: none; touch-action: none;">
                                     <option value="" {{$pasien->gender == '' ? 'selected' : ''}}>Pilih</option>
                                     <option value="Laki-laki" {{$pasien->gender == 'Laki-laki' ? 'selected' : ''}}>Man</option>
                                     <option value="Perempuan" {{$pasien->gender == 'Perempuan' ? 'selected' : ''}}>Woman</option>
@@ -90,21 +87,20 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <label for="inputPenyakit" class="form-label">Desease</label>
-                                <input value="{{$pasien->disease}}" type="text" name="disease" id="inputPenyakit" class="form-control" required>
+                                <label for="inputPenyakit" class="form-label">Disease</label>
+                                <input value="{{$pasien->disease}}" readonly type="text" name="disease" id="inputPenyakit" class="form-control" required>
                             </div>
                         </div>
                         <div class="row pt-5">
                             <div class="col-md-4">
                                 <label for="inputLamaMinumObat" class="form-label">Time to take medicine</label>
-                                <input value="{{$pasien->time_to_take_medicine}}" type="text" name="time_to_take_medicine" id="inputLamaMinumObat"
+                                <input value="{{$pasien->time_to_take_medicine}}" readonly type="text" name="time_to_take_medicine" id="inputLamaMinumObat"
                                     class="form-control" required>
                             </div>
                             <div class="col-md-4">
-                                <label for="inputObatSehari" class="form-label">time to take medication (/day)</label>
-                                <select name="medication_times" id="inputObatSehari" class="form-control"
-                                    style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px;"
-                                    onchange="showHideTimeInput()">
+                                <label for="inputObatSehari" class="form-label">Time to take medication (/day)</label>
+                                <select name="medication_times"  id="inputObatSehari" class="form-control"
+                                    style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px; pointer-events: none; touch-action: none;">
                                     <option value="" {{$pasien->medication_times == '' ? 'selected' : ''}}>Choose Here</option>
                                     <option value="1" {{$pasien->medication_times == '1' ? 'selected' : ''}}>1</option>
                                     <option value="2" {{$pasien->medication_times == '2' ? 'selected' : ''}}>2</option>
@@ -112,142 +108,201 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <label for="inputStatus" class="form-label">Status</label>
-                                <select name="status" id="inputStatus" class="form-control"
-                                    style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px;">
+                                <label for="status" class="form-label">Status</label>
+                                <select name="status" id="status"  class="form-select" style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px; pointer-events: none; touch-action: none;">
                                     <option value="" {{$pasien->status == '' ? 'selected' : ''}}>Choose Here</option>
                                     <option value="Active" {{$pasien->status == 'Active' ? 'selected' : ''}}>Active</option>
                                     <option value="Done" {{$pasien->status == 'Done' ? 'selected' : ''}}>Done</option>
                                 </select>
                             </div>
-                            <div class="col-md-4">
-                                <label for="inputLevel" class="form-label">Level</label>
-                                <select name="level" id="inputLevel" class="form-control"
-                                    style="border: 2px solid rgba(34, 101, 151, 1); border-width: 3px;">
-                                    <option value="" {{$pasien->level == '' ? 'selected' : ''}}>Choose Here</option>
-                                    <option value="Low" {{$pasien->level == 'Low' ? 'selected' : ''}}>Low</option>
-                                    <option value="Medium" {{$pasien->level == 'Medium' ? 'selected' : ''}}>Medium</option>
-                                    <option value="High" {{$pasien->level == 'High' ? 'selected' : ''}}>High</option>
-                                </select>
-                            </div>
                         </div>
-                        <div class="row pt-5" id="timeInputs" style="display: none;">
-                            {{-- Kolom tambahan untuk input waktu minum obat akan muncul di sini --}}
+                        <div class="row pt-5 pb-5">
+                            <h5 style="color:red;">Note: pasien ini minum obat dari tanggal {{$pasien->mulai_minum}} hingga {{$pasien->akhir_minum}}</h5>
                         </div>
-                        <div class="row pt-5">
-                            <div class="col-md-12">
-                                <div class="d-grid gap-2">
-                                    <button type="submit" class="btn btn-md text-light" onclick="#"
-                                        style="background-color: #ff0000">Kepatuhan</button>
-                                </div>
+                        <table width="100%" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td colspan="5" class="table-bordered text-center" style="font-weight:bolder;font-size:20px;">Riwayat Minum Obat Pasien</td>
+                                </tr>
+                                <tr>
+                                    <td>Hari</td>
+                                    <td>Sudah Minum</td>
+                                    <td>Tanggal Minum</td>
+                                    <td>Waktu Minum</td>
+                                    <td>Bukti</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $waktuMinum = $pasien->waktuMinum()->get();
+                                @endphp
+                                @foreach ($waktuMinum as $data)
+                                    <tr>
+                                        <td>{{ $data->hari }}</td>
+                                        <td>{{ $data->sudah_minum ? 'Sudah' : 'Belum' }}</td>
+                                        <td>{{ $data->tanggal_minum }}</td>
+                                        <td>{{ $data->waktu_minum }}</td>
+                                        <td>
+                                            <!-- Option 1: Direct Styling -->
+                                            <img src="{{ $data->bukti_minum }}" alt="Bukti Minum" class="img-fluid" style="width: 200px; height: auto; border-radius: 0;">
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="row pt-2 pb-5">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <a href="/download-excel/{{ $pasien->id }}" class="btn btn-success btn-block">Download Excel</a>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- modal kepatuhan -->
-        <div class="modal fade" id="tambahWaktuMinumModal" tabindex="-1" aria-labelledby="tambahWaktuMinumModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="tambahWaktuMinumModalLabel">Tambah Waktu Minum</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <dir class="board">
-                            <div class="textheadertable" style="padding:20px;">
-                                <div id="test" style="float:left;">
-                                    <h1>Control Patient</h1>
-                                </div>
-                                <div style="float:right;">
-                                    <button type="button" class="btn btn-primary" onclick="showTambahWaktuMinumModal()">+ Tambah Waktu Minum</button>
-                                </div>
-                                <div style="clear:both;"></div>
-                            </div>
-                            <table width="100%">
+            <div class="card border-0 shadow border-radius" style="margin-top: 30px;">
+                <div class="container">
+                    <h2 class="text-center pt-3">Upload Data Kepatuhan</h2>
+                    <form method="POST" action="{{ route('uploadCsv') }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('POST')
+                        <div class="form-group">
+                            <label for="file" class="mx-1">Upload File Excel:</label>
+                            <input type="file" class="form-control mt-2 mb-4" id="file" name="file" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-5">Upload</button>
+                    </form>
+                
+                    @if(session('success'))
+                        <div class="alert alert-success mt-3">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                
+                    @if(session('error'))
+                        <div class="alert alert-danger mt-3">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                
+                    @if(session('complianceData'))
+                        <div class="mt-5">
+                            <h2>Compliance Data</h2>
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Hari</th>
-                                        <th>Sudah Minum</th>
-                                        <th>Bukti</th>
+                                        <th>Tanggal Minum</th>
+                                        <th>Persentase Kepatuhan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @php
-                                    $pasien = Auth::guard('pasien')->user();
-                                    $waktuMinum = $pasien->waktuMinum()->get();
-                                @endphp
-
-                                @foreach ($waktuMinum as $waktu)
-                                    <tr>
-                                        <td>{{ $waktu->hari }}</td>
-                                        <td>{{ $waktu->sudah_minum ? 'Sudah' : 'Belum' }}</td>
-                                        <td>
-                                            @if($waktu->bukti_minum)
-                                                <a href="{{ asset('storage/' . $waktu->bukti_minum) }}" target="_blank">
-                                                    <img src="{{ asset('storage/' . $waktu->bukti_minum) }}" alt="Bukti Minum" style="max-width: 100px;">
-                                                </a>
-                                            @else
-                                                -
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                    @php
+                                        $totalDays = count(session('complianceData'));
+                                        $totalPercentage = 0;
+                                    @endphp
+                                    @foreach(session('complianceData') as $data)
+                                        @php
+                                            $totalPercentage += $data['Persentase Kepatuhan'];
+                                        @endphp
+                                        <tr>
+                                            <td>{{ $data['Hari'] }}</td>
+                                            <td>{{ $data['Tanggal'] }}</td>
+                                            <td>{{ $data['Persentase Kepatuhan'] }}%</td>
+                                        </tr>
+                                    @endforeach
+                                    @php
+                                        $averageCompliance = $totalDays ? $totalPercentage / $totalDays : 0;
+                                        $complianceStatus = $averageCompliance >= 80 ? 'Patuh' : 'Tidak Patuh';
+                                    @endphp
                                 </tbody>
                             </table>
-                        </dir>
+                            <div class="mt-3">
+                                <h4>Status Kepatuhan: {{ $complianceStatus }}</h4>
+                                <p>Total Hari: {{ $totalDays }}</p>
+                                <p>Rata-rata Persentase Kepatuhan: {{ number_format($averageCompliance, 2) }}%</p>
+                            </div>
+                        </div>
+                    @endif
+                </div>                                      
+                <!-- Modal -->
+                <div class="modal fade" id="kepatuhanModal" tabindex="-1" aria-labelledby="kepatuhanModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="kepatuhanModalLabel">Medication Adherence</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="medicationTimes"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+                    integrity="sha384-oBqDVmMz4fnFO9gybBogGzU6legyJ8/Y7D2RzA7zmObpdtIfl5Wc5c5Exnb1Anwf" crossorigin="anonymous">
+                </script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+                    integrity="sha384-QF1FQeQRd+8ZtCp0BtxNBKhqIMrfSJpXU1p4OmJxKOxKhOg4kXvi7CFOBjcBQxaE" crossorigin="anonymous">
+                </script>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+                <script>
+                    $(document).ready(function () {
+                        $('[data-bs-toggle="modal"]').on('click', function () {
+                            var pasienId = $(this).data('pasien-id');
+                            $.ajax({
+                                url: '/kepatuhan/' + pasienId,
+                                method: 'GET',
+                                success: function (response) {
+                                    if (response.error) {
+                                        $('#medicationTimes').html('<p>' + response.error + '</p>');
+                                    } else {
+                                        var medicationTimesHtml = '<ul>';
+                                        response.medicationTimes.forEach(function (time) {
+                                            medicationTimesHtml += '<li>' + time + '</li>';
+                                        });
+                                        medicationTimesHtml += '</ul>';
+                                        $('#medicationTimes').html(medicationTimesHtml);
+                                    }
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <script>
+                    $(document).ready(function() {
+                        $('#uploadForm').on('submit', function(event) {
+                            event.preventDefault();
+                            var formData = new FormData(this);
+                            $.ajax({
+                                url: 'http://localhost:5000/api/compliance',
+                                type: 'POST',
+                                data: formData,
+                                contentType: false,
+                                processData: false,
+                                success: function(response) {
+                                    var resultHtml = '<ul>';
+                                    $.each(response, function(patient_id, compliance_percentage) {
+                                        resultHtml += '<li>Persentase kepatuhan pasien ' + patient_id + ': ' + compliance_percentage + '%</li>';
+                                    });
+                                    resultHtml += '</ul>';
+                                    $('#result').html(resultHtml);
+                                },
+                                error: function(response) {
+                                    $('#result').html('<p class="text-danger">Error: ' + response.responseJSON.error + '</p>');
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
         </div>
-
-    <script>
-        function showTambahWaktuMinumModal() {
-            $('#tambahWaktuMinumModal').modal('show');
-        }
-
-        function submitForm() {
-            // Lakukan validasi formulir dan kirim data ke server
-            // Misalnya menggunakan AJAX
-            // Setelah berhasil, tutup modal
-            $('#tambahWaktuMinumModal').modal('hide');
-        }
-    </script>
-    <script>
-        function showHideTimeInput() {
-            var selectedValue = parseInt(document.getElementById("inputObatSehari").value);
-            var timeInputsDiv = document.getElementById("timeInputs");
-
-            // Menghapus semua input waktu yang ada sebelum menambah yang baru
-            timeInputsDiv.innerHTML = "";
-
-            // Menambah input waktu sesuai dengan jumlah yang dipilih
-            for (var i = 0; i < selectedValue; i++) {
-                var inputTime = document.createElement("div");
-                inputTime.classList.add("col-md-4");
-                inputTime.innerHTML = `
-                    <label for="waktu${i+1}">Jam Minum ${i+1}:</label>
-                    <input type="time" id="waktu${i+1}" name="waktu${i+1}">
-                `;
-                timeInputsDiv.appendChild(inputTime);
-            }
-
-            // Menampilkan atau menyembunyikan div input waktu
-            if (selectedValue === 0) {
-                timeInputsDiv.style.display = "none";
-            } else {
-                timeInputsDiv.style.display = "block";
-            }
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <script src="js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+    </div>
 </body>
 
 </html>
